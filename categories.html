@@ -1,0 +1,23 @@
+---
+layout: default
+title: Johnbug|categories
+---
+
+<div id="archive">
+    {% for category in site.categories reverse %}
+        <a name="{{ category[0] }}"></a>
+		<a href="#{{ category[0] }}" >
+            <h2 id="{{ category[0] }}-ref">{{ category[0] }}<span> ({{ category[1].size }}) </span></h2>
+        </a>
+		<ul>
+        {% for post in category[1] %}
+            <article>
+            <li><a href="{{ root_url }}{{ post.url }}" style="float:left;padding-right:15px;" title="{{ post.title }}">{{post.title}}</a></li>
+			<h3><time datetime="{{ post.date }}" pubdate>{{ post.date | date: "<span class='year'>%Y年</span><span class='month'>%m月</span> <span class='day'>%d日</span>"}}</time>
+			<div class="clear"><h3>
+            </article>
+        {% endfor %}
+		</ul>
+	{% endfor %}
+</div>
+

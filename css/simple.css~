@@ -1,0 +1,89 @@
+/*div design*/
+/*main frame*/
+body{
+	background-color:#F8F5E6;
+}
+#frame{
+	position: absolute;
+	left: 10%;
+	top: 0;
+	width: 80%;
+	height: 578px;
+	/*font-family: "Times New Roman",Georgia,Serif;*/
+	background:#F8F5E6;
+}
+/*header*/
+#head{
+	width: 100%;
+	height: 100px;
+	font-size: 100%;
+	float: left;
+	background:#F8F5E6;
+}
+/*main container*/
+#container{
+	width:100%;
+	min-height:400px;
+	float:left;
+	background:#F8F5E6;
+}
+/*main body*/
+#main_body{
+	width:65%;
+	float:left;
+	background:#F8F5E6;
+}
+/*right side*/
+#side{
+	width:30%;
+	float:right;
+	background:#F8F5E6;
+}
+/*footer*/
+#foot{
+	width:100%;
+	height:30px;
+	float:left;
+	background:#F8F5E6;
+}
+
+/*————————————————————————————————————————————*/
+/*class design*/
+/*header p*/
+p.pos_left{
+	position:relative;
+	top:-140px;
+	color:#e8ecef;
+	font-size:100px;
+	font-weight:normal;
+}
+
+
+/* @group .post-meta */
+
+.post-meta {
+  float: left;
+  width: 47px;
+  margin-top: 2px;
+  margin-left: -50px;
+  border-right: 1px solid #E6E6E6;
+}
+.post-meta p {
+    margin: 0px;
+}
+
+.post-meta .date {
+    color: #cdcdcd;
+    text-align: center;
+    line-height: 1.1em;
+    margin: 8px 0px 5px 0px;
+}
+.post-meta .date i {
+     font-style: normal;
+     font-size: 24px;
+     display: block;
+}
+    
+
+/* @end */
+

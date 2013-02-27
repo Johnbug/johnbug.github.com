@@ -1,0 +1,18 @@
+---
+layout: default
+title: Johnbug
+---
+{% for post in site.posts limit:10 %}
+	<div class="post-meta">
+	    <p class="date"><i>{{ post.date | date_to_string }}</i></p>
+	</div>
+	<h2 class="post-title">
+		<a href="{{ post.url }}">{{ post.title }}</a>
+	</h2><div id = "post">
+	<p>{{ post.content}}</p>
+	</div>
+	</br>
+	<a href="{{ post.url }}">Read More</a>
+	</br>
+	</br>
+{% endfor %}

@@ -1,0 +1,5 @@
+baseurl:
+img_url: http://johnbug.github.com/assets/image
+safe: true
+auto: true
+pygments: true
