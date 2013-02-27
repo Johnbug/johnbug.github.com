@@ -2,6 +2,7 @@
 /*main frame*/
 body{
 	background-color:white;
+	font-family: "momo","liugongquan","qigong";
 }
 #frame{
 	position: absolute;
@@ -108,13 +109,13 @@ p.Home{
 p.archive{
 	position:fixed;
 	top:2px;
-	right:102px;
+	right:95px;
 	font-size:10px;
 }
 p.about{
 	position:fixed;
 	top:2px;
-	right:165px;
+	right:155px;
 	font-size:10px;
 }
 p.little{
@@ -156,15 +157,15 @@ h2.post-title{
 /* @font */
 @font-face {
  font-family: 'qigong';
- src: url('/assets/fonts/qigong/qigong.ttf');
+ src: url('/assets/fonts/qigong/qigong.TTF') format('truetype');
 }  
 @font-face {
  font-family: 'liu';
- src: url('/assets/fonts/liu/liu.ttf');
+ src: url('/assets/fonts/liu/liu.TTF') format('truetype');
 }  
 @font-face {
  font-family: 'liugongquan';
- src: url('/assets/fonts/liugongquan/liu2.ttf');
+ src: url('/assets/fonts/liugongquan/liu2.TTF') format('truetype');
 }  
 @font-face {
  font-family: 'Colab';
@@ -178,7 +179,7 @@ h2.post-title{
 } 
 @font-face {
  font-family: 'momo';
- src: url('/assets/fonts/momo/DejaVuSansMono.ttf');
+ src: url('/assets/fonts/momo/DejaVuSansMono.ttf') format('truetype');
  unicode-range: U+41-5A, U+61-7A, U+C0-FF;
 } 
 /* @end */

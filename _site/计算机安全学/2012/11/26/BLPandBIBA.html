@@ -23,7 +23,7 @@
 	<h2 class="post-title">
 		<a href="">计算机安全学：BLP模型和BIBA模型</a>
 	</h2>
-	<p><h1 id='id4570'>今日签到</h1>
+	<p><h1 id='id385'>今日签到</h1>
 
 <p>复习今天计算机安全学的课，昨天准备今天的ppt花费了很多时间，但也能大致理解BLP模型和BIBA模型，辛苦队友们了。大家一起学习时焕发的激情让我想到如果我们成立的小组如果能每天都组织去学习，共同探讨一些东西，是提高学习效率的好方法，不再是一个人闭门造车。那些闭门造车的只要弄懂了某些知识就好像得到什么宝一样不和别人分享。这是非常不利的。当然很多牛人对于知识的分享都是比较懒惰的，只能说他们懒惰了！</p>
 
@@ -41,26 +41,26 @@ BIBA模型；</code></pre>
 
 <p>关键词： + 状态机模型 + 机密性 + 访问控制矩阵 + 安全级别 + 安全策略 + 安全模型 + 信息流向</p>
 
-<h2 id='id4571'>安全策略</h2>
+<h2 id='id386'>安全策略</h2>
 
 <pre><code>安全策略为一个安全系统或一组安全系统定义安全；安全策略考虑机密性，完整性，可用性；
 面对特定的安全需求得出的安全策略，在安全系统中定义什么才叫安全，这就是所谓的安全策略。</code></pre>
 
-<h2 id='id4572'>安全模型</h2>
+<h2 id='id387'>安全模型</h2>
 
 <pre><code>表示一个特定策略或一组策略的模型。</code></pre>
 
 <p>安全模型通常是形式化的描述安全策略。为此需要对系统进行建模，有三种主要的模型。 1. 状态机模型 2. 信息流模型 3. 不干扰模型</p>
 
-<h2 id='id4573'>状态机模型</h2>
+<h2 id='id388'>状态机模型</h2>
 
 <pre><code>状态机模型是状态以及发生在离散时间点上状态的变化</code></pre>
 
 <p>其实就是状态和状态转移。</p>
 
-<h3 id='id4574'>一般状态机模型</h3>
+<h3 id='id389'>一般状态机模型</h3>
 
-<h4 id='id4575'>定义状态集：</h4>
+<h4 id='id390'>定义状态集：</h4>
 
 <pre><code>A set of states, Q
 An input alphabet Σ
@@ -71,7 +71,7 @@ transition function δ : Q × Σ → Q
 
 <p><img alt='state_Machine1' src='http://m3.img.libdd.com/farm4/2012/1126/23/078444D44E18596F3E8759E339CA9B1007697180F6503_171_214.JPEG' /></p>
 
-<h4 id='id4576'>状态机模型描述：</h4>
+<h4 id='id391'>状态机模型描述：</h4>
 
 <pre><code>A state can be good or bad
       secure or insecure
@@ -83,7 +83,7 @@ Two criteria
 
 <p><img alt='state_Machine2' src='http://m2.img.libdd.com/farm5/2012/1126/23/8A8A2B6DAE39EE46F9E9A95BECB067B8E31448725EE3E_167_223.JPEG' /></p>
 
-<h4 id='id4577'>状态机原则：</h4>
+<h4 id='id392'>状态机原则：</h4>
 
 <pre><code>Describe all secure states
 Describe transitions from secure states
@@ -95,7 +95,7 @@ Prove that no transition leads from secure to insecure</code></pre>
 
 <h3 id='blp'>具体到BLP模型</h3>
 
-<h4 id='id4578'>定义状态集</h4>
+<h4 id='id393'>定义状态集</h4>
 
 <pre><code>a set of subjects S
 a set of objects O
@@ -115,7 +115,7 @@ fS : S → L maximal security level of a subject
 fC : S → L current security level of a subject (fC ≤ fS)
 fO : O → L classiﬁcation of an object</code></pre>
 
-<h4 id='id4579'>安全策略</h4>
+<h4 id='id394'>安全策略</h4>
 
 <p>BLP的安全策略在于：</p>
 
@@ -157,7 +157,7 @@ fO(o) ≤ fS(s)</code></pre>
 
 <p>BIBA模型主要描述的是完整性，BLP模型描述或者说注重的是信息的私密性。信息的完整性就是说：信息的来源是安全的。保证信息的完整性就是BIBA模型的中心。</p>
 
-<h3 id='id4580'>安全策略</h3>
+<h3 id='id395'>安全策略</h3>
 
 <p>BIBA模型主要应用于商业，如银行。举个具体的例子，在学校，任课老师，班长，学生读应安全安级别。老师说：“大家期末都不挂课”。学生会相信。但是如果班长说：“大家期末都不挂课”，大家就不一定相信了。老师亲自给的答案，大家会相信，如果经过班长的手，就会产生疑惑。所以我们为了保证信息的完整性，就规定：信息要“下流”，信息只能是“上读下写”。这样才能保证信息的来源可靠；</p>
 
@@ -173,44 +173,45 @@ fO(o) ≤ fS(s)</code></pre>
 <p>今天某美女分享了一个话题：SleepSort。</p>
 
 <p>见代码：</p>
-<div>
-  <pre><code class='bash'>#!/bin/bash
-function f() {
-    sleep &quot;$1&quot;
-    echo &quot;$1&quot;
-}
-while [ -n &quot;$1&quot; ]
-do
-    f &quot;$1&quot; &amp;
-    shift
-done
-wait</code></pre>
+<div class='highlight'><pre><code class='bash'><span class='c'>#!/bin/bash</span>
+<span class='k'>function </span>f<span class='o'>()</span> <span class='o'>{</span>
+    sleep <span class='s2'>&quot;$1&quot;</span>
+    <span class='nb'>echo</span> <span class='s2'>&quot;$1&quot;</span>
+<span class='o'>}</span>
+<span class='k'>while</span> <span class='o'>[</span> -n <span class='s2'>&quot;$1&quot;</span> <span class='o'>]</span>
+<span class='k'>do</span>
+<span class='k'>    </span>f <span class='s2'>&quot;$1&quot;</span> &amp;
+    <span class='nb'>shift</span>
+<span class='k'>done</span>
+<span class='nb'>wait</span>
+</code></pre>
 </div>
 <p>这个东西真是用来娱乐身心的好东西。</p>
 
-<p>还有是分形图：！<a href='http://m1.img.libdd.com/farm4/2012/1126/23/6F85DEFB1EBAD85D496BCCAD3AAC9EF07FD086AE95681_800_533.jpg' title='分形图'>分形图</a> 神代码： <div>
-  <pre><code class='python'>_                                      =   (
-                                        255,
-                                      lambda
-                               V       ,B,c
-                             :c   and Y(V*V+B,B,  c
-                               -1)if(abs(V)&lt;6)else
-               (              2+c-4*abs(V)**-0.4)/i
-                 )  ;v,      x=1500,1000;C=range(v*x
-                  );import  struct;P=struct.pack;M,\
-            j  ='&lt;QIIHHHH',open('M.bmp','wb').write
-for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
-            i  ,Y=_;j(P('BBB',*(lambda T:(T*80+T**9
-                  *i-950*T  **99,T*70-880*T**18+701*
-                 T  **9     ,T*i**(1-T**45*2)))(sum(
-               [              Y(0,(A%3/3.+X%v+(X/v+
-                               A/3/3.-x/2)/1j)*2.5
-                             /x   -2.7,i)**2 for  \
-                               A       in C
-                                      [:9]])
-                                        /9)
-                                       )   )</code></pre>
-</div></p></p>
+<p>还有是分形图：！<a href='http://m1.img.libdd.com/farm4/2012/1126/23/6F85DEFB1EBAD85D496BCCAD3AAC9EF07FD086AE95681_800_533.jpg' title='分形图'>分形图</a> 神代码：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>_</span>                                      <span class='o'>=</span>   <span class='p'>(</span>
+                                        <span class='mi'>255</span><span class='p'>,</span>
+                                      <span class='k'>lambda</span>
+                               <span class='n'>V</span>       <span class='p'>,</span><span class='n'>B</span><span class='p'>,</span><span class='n'>c</span>
+                             <span class='p'>:</span><span class='n'>c</span>   <span class='ow'>and</span> <span class='n'>Y</span><span class='p'>(</span><span class='n'>V</span><span class='o'>*</span><span class='n'>V</span><span class='o'>+</span><span class='n'>B</span><span class='p'>,</span><span class='n'>B</span><span class='p'>,</span>  <span class='n'>c</span>
+                               <span class='o'>-</span><span class='mi'>1</span><span class='p'>)</span><span class='k'>if</span><span class='p'>(</span><span class='nb'>abs</span><span class='p'>(</span><span class='n'>V</span><span class='p'>)</span><span class='o'>&lt;</span><span class='mi'>6</span><span class='p'>)</span><span class='k'>else</span>
+               <span class='p'>(</span>              <span class='mi'>2</span><span class='o'>+</span><span class='n'>c</span><span class='o'>-</span><span class='mi'>4</span><span class='o'>*</span><span class='nb'>abs</span><span class='p'>(</span><span class='n'>V</span><span class='p'>)</span><span class='o'>**-</span><span class='mf'>0.4</span><span class='p'>)</span><span class='o'>/</span><span class='n'>i</span>
+                 <span class='p'>)</span>  <span class='p'>;</span><span class='n'>v</span><span class='p'>,</span>      <span class='n'>x</span><span class='o'>=</span><span class='mi'>1500</span><span class='p'>,</span><span class='mi'>1000</span><span class='p'>;</span><span class='n'>C</span><span class='o'>=</span><span class='nb'>range</span><span class='p'>(</span><span class='n'>v</span><span class='o'>*</span><span class='n'>x</span>
+                  <span class='p'>);</span><span class='kn'>import</span>  <span class='nn'>struct</span><span class='p'>;</span><span class='n'>P</span><span class='o'>=</span><span class='n'>struct</span><span class='o'>.</span><span class='n'>pack</span><span class='p'>;</span><span class='n'>M</span><span class='p'>,</span>\
+            <span class='n'>j</span>  <span class='o'>=</span><span class='s'>&#39;&lt;QIIHHHH&#39;</span><span class='p'>,</span><span class='nb'>open</span><span class='p'>(</span><span class='s'>&#39;M.bmp&#39;</span><span class='p'>,</span><span class='s'>&#39;wb&#39;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>write</span>
+<span class='k'>for</span> <span class='n'>X</span> <span class='ow'>in</span> <span class='n'>j</span><span class='p'>(</span><span class='s'>&#39;BM&#39;</span><span class='o'>+</span><span class='n'>P</span><span class='p'>(</span><span class='n'>M</span><span class='p'>,</span><span class='n'>v</span><span class='o'>*</span><span class='n'>x</span><span class='o'>*</span><span class='mi'>3</span><span class='o'>+</span><span class='mi'>26</span><span class='p'>,</span><span class='mi'>26</span><span class='p'>,</span><span class='mi'>12</span><span class='p'>,</span><span class='n'>v</span><span class='p'>,</span><span class='n'>x</span><span class='p'>,</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>24</span><span class='p'>))</span><span class='ow'>or</span> <span class='n'>C</span><span class='p'>:</span>
+            <span class='n'>i</span>  <span class='p'>,</span><span class='n'>Y</span><span class='o'>=</span><span class='n'>_</span><span class='p'>;</span><span class='n'>j</span><span class='p'>(</span><span class='n'>P</span><span class='p'>(</span><span class='s'>&#39;BBB&#39;</span><span class='p'>,</span><span class='o'>*</span><span class='p'>(</span><span class='k'>lambda</span> <span class='n'>T</span><span class='p'>:(</span><span class='n'>T</span><span class='o'>*</span><span class='mi'>80</span><span class='o'>+</span><span class='n'>T</span><span class='o'>**</span><span class='mi'>9</span>
+                  <span class='o'>*</span><span class='n'>i</span><span class='o'>-</span><span class='mi'>950</span><span class='o'>*</span><span class='n'>T</span>  <span class='o'>**</span><span class='mi'>99</span><span class='p'>,</span><span class='n'>T</span><span class='o'>*</span><span class='mi'>70</span><span class='o'>-</span><span class='mi'>880</span><span class='o'>*</span><span class='n'>T</span><span class='o'>**</span><span class='mi'>18</span><span class='o'>+</span><span class='mi'>701</span><span class='o'>*</span>
+                 <span class='n'>T</span>  <span class='o'>**</span><span class='mi'>9</span>     <span class='p'>,</span><span class='n'>T</span><span class='o'>*</span><span class='n'>i</span><span class='o'>**</span><span class='p'>(</span><span class='mi'>1</span><span class='o'>-</span><span class='n'>T</span><span class='o'>**</span><span class='mi'>45</span><span class='o'>*</span><span class='mi'>2</span><span class='p'>)))(</span><span class='nb'>sum</span><span class='p'>(</span>
+               <span class='p'>[</span>              <span class='n'>Y</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,(</span><span class='n'>A</span><span class='o'>%</span><span class='mi'>3</span><span class='o'>/</span><span class='mf'>3.</span><span class='o'>+</span><span class='n'>X</span><span class='o'>%</span><span class='n'>v</span><span class='o'>+</span><span class='p'>(</span><span class='n'>X</span><span class='o'>/</span><span class='n'>v</span><span class='o'>+</span>
+                               <span class='n'>A</span><span class='o'>/</span><span class='mi'>3</span><span class='o'>/</span><span class='mf'>3.</span><span class='o'>-</span><span class='n'>x</span><span class='o'>/</span><span class='mi'>2</span><span class='p'>)</span><span class='o'>/</span><span class='mi'>1j</span><span class='p'>)</span><span class='o'>*</span><span class='mf'>2.5</span>
+                             <span class='o'>/</span><span class='n'>x</span>   <span class='o'>-</span><span class='mf'>2.7</span><span class='p'>,</span><span class='n'>i</span><span class='p'>)</span><span class='o'>**</span><span class='mi'>2</span> <span class='k'>for</span>  \
+                               <span class='n'>A</span>       <span class='ow'>in</span> <span class='n'>C</span>
+                                      <span class='p'>[:</span><span class='mi'>9</span><span class='p'>]])</span>
+                                        <span class='o'>/</span><span class='mi'>9</span><span class='p'>)</span>
+                                       <span class='p'>)</span>   <span class='p'>)</span>
+</code></pre>
+</div></p>
 		</div>
 		<div id = "side">
 		</br></br>
@@ -237,7 +238,7 @@ for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
 			</br>
 		
 			26 Nov 2012
-			<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8%E5%AD%A6/2012/11/26/BLPandBIBA.html">计算机安全学：BLP模型和BIBA模型</a>
+			<a href="/计算机安全学/2012/11/26/BLPandBIBA.html">计算机安全学：BLP模型和BIBA模型</a>
 			</br>
 		
 			09 Nov 2012

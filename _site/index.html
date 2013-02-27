@@ -52,7 +52,7 @@ xmlhttp.send();
 
 <p>今天主要读了第一章<code>基础知识</code>。</p>
 
-<h3 id='id4584'>交互式解释器</h3>
+<h3 id='id399'>交互式解释器</h3>
 
 <p>python是一种<code>解释性</code>的语言,当然要用<code>解释器</code>来翻译.下面是一段来自维基对于解释器和<code>编译器</code>的解释.</p>
 
@@ -60,15 +60,15 @@ xmlhttp.send();
 <p>解释器（英语：Interpreter），又译为直译器，是一种电脑程序，能够把高级编程语言一行一行直接转译运行。解释器不会一次把整个程序转译出来，只像一位“中间人”，每次运行程序时都要先转成另一种语言再作运行，因此解释器的程序运行速度比较缓慢。它每转译一行程序叙述就立刻运行，然后再转译下一行，再运行，如此不停地进行下去。 解释器的好处是它消除了编译整个程序的负担，但也会让运行时的效率打了折扣。相对地，编译器并不运行程序或原代码，而是一次将其翻译成另一种语言，如机器码，以供多次运行而无需再经编译。其制成品无需依赖编译器而运行，程序运行速度比较快。</p>
 </blockquote>
 <hr />
-<h3 id='id4585'>模块</h3>
+<h3 id='id400'>模块</h3>
 
 <p>这个我觉得类似于java的包.实现了python的扩展性..py文件的我觉得可以称作以个模块。</p>
 <hr />
-<h3 id='id4586'><code>_future_</code></h3>
+<h3 id='id401'><code>_future_</code></h3>
 
 <p>这就是程序员的浪漫！python之父的卖萌时光机！</p>
 <hr />
-<h3 id='id4587'>版本</h3>
+<h3 id='id402'>版本</h3>
 
 <p>python是不断更新的语言，所以要多多注意版本。比如在书中</p>
 
@@ -84,14 +84,14 @@ xmlhttp.send();
 
 <p>退出则是按键q！ 我觉得pc里要安装几个版本的python解释器，不然后面会不够用的！！ <a href='http://www.python.org/download/releases/'>在这里下载</a></p>
 <hr />
-<h3 id='id4588'>新建模板和运行</h3>
+<h3 id='id403'>新建模板和运行</h3>
 
 <p>用编辑器比如vim，emacs，notepad++即可编辑，然后在IDEL里打开！也可在命令行打开运行，在环境变量里设置好就行！</p>
 <hr />
 <h3 id='python'>第一个python程序</h3>
-<div>
-  <pre><code class='python'>name = input(&quot;Input your name please&quot;)
-print('fuck YOU '+name)</code></pre>
+<div class='highlight'><pre><code class='python'><span class='n'>name</span> <span class='o'>=</span> <span class='nb'>input</span><span class='p'>(</span><span class='s'>&quot;Input your name please&quot;</span><span class='p'>)</span>
+<span class='k'>print</span><span class='p'>(</span><span class='s'>&#39;fuck YOU &#39;</span><span class='o'>+</span><span class='n'>name</span><span class='p'>)</span>
+</code></pre>
 </div></p>
 	</div>
 	</br>
@@ -129,7 +129,7 @@ print('fuck YOU '+name)</code></pre>
 
 <p>使用方法参考：<a href='http://fhqdddddd.blog.163.com/blog/static/186991542011427104124407/'>方法</a></p>
 
-<h2 id='id4583'>感受</h2>
+<h2 id='id398'>感受</h2>
 
 <p>我还是改不了拖延的毛病，很久以前就被拜托做这个小软件，但是没有很好的明确他的要求，所以没有很好的做出来。过年也多大心情和时间做这个东西。等到匆匆做出来后又有一大堆的bug！对方并没有满足！哎！做事拖延真是害人害己！ 略微失败的经历！</p>
 
@@ -201,7 +201,7 @@ print('fuck YOU '+name)</code></pre>
 
 <p>Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。github用的就是git，所以我们上传代码和使用github都是要用的git的，git的使用很简单！ Google一下一大堆的资料，其中的SSH的密钥对，就是用自己的邮箱来生成一个公钥，用自己的密码作为私钥进行身份认证。对同一个库提供多人验证。</p>
 
-<h2 id='id4581'>站点结构</h2>
+<h2 id='id396'>站点结构</h2>
 
 <p>做完了这些配置之后，就开始建立一个库，然后建立一个文件结构，典型的目录结构就是：</p>
 
@@ -220,7 +220,7 @@ index.html</code></pre>
 
 <p>成功后，就自动产生了。不要自己去建立。</p>
 
-<h2 id='id4582'>设计</h2>
+<h2 id='id397'>设计</h2>
 
 <p>自己按照自己的口味做自己喜欢的blog!要学的主要是html和css的基础! github的好处就是可以去参考别人的代码!现在也很多用github建站.所以可参考的代码是一大堆的。对于<code>liquid</code>语法，参考别人的代码也可以收获相当多。我的blog的主题是v字仇杀队，做得感觉还好！但没有一般blog清新的感觉，如果用来提供阅读的环境，并不是很好!先保留着，这几天做得也比较累了！</p>
 
@@ -253,9 +253,9 @@ index.html</code></pre>
 	    <p class="date"><i>26 Nov 2012</i></p>
 	</div>
 	<h2 class="post-title">
-		<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8%E5%AD%A6/2012/11/26/BLPandBIBA.html">计算机安全学：BLP模型和BIBA模型</a>
+		<a href="/计算机安全学/2012/11/26/BLPandBIBA.html">计算机安全学：BLP模型和BIBA模型</a>
 	</h2><div id = "post">
-	<p><h1 id='id4570'>今日签到</h1>
+	<p><h1 id='id385'>今日签到</h1>
 
 <p>复习今天计算机安全学的课，昨天准备今天的ppt花费了很多时间，但也能大致理解BLP模型和BIBA模型，辛苦队友们了。大家一起学习时焕发的激情让我想到如果我们成立的小组如果能每天都组织去学习，共同探讨一些东西，是提高学习效率的好方法，不再是一个人闭门造车。那些闭门造车的只要弄懂了某些知识就好像得到什么宝一样不和别人分享。这是非常不利的。当然很多牛人对于知识的分享都是比较懒惰的，只能说他们懒惰了！</p>
 
@@ -273,26 +273,26 @@ BIBA模型；</code></pre>
 
 <p>关键词： + 状态机模型 + 机密性 + 访问控制矩阵 + 安全级别 + 安全策略 + 安全模型 + 信息流向</p>
 
-<h2 id='id4571'>安全策略</h2>
+<h2 id='id386'>安全策略</h2>
 
 <pre><code>安全策略为一个安全系统或一组安全系统定义安全；安全策略考虑机密性，完整性，可用性；
 面对特定的安全需求得出的安全策略，在安全系统中定义什么才叫安全，这就是所谓的安全策略。</code></pre>
 
-<h2 id='id4572'>安全模型</h2>
+<h2 id='id387'>安全模型</h2>
 
 <pre><code>表示一个特定策略或一组策略的模型。</code></pre>
 
 <p>安全模型通常是形式化的描述安全策略。为此需要对系统进行建模，有三种主要的模型。 1. 状态机模型 2. 信息流模型 3. 不干扰模型</p>
 
-<h2 id='id4573'>状态机模型</h2>
+<h2 id='id388'>状态机模型</h2>
 
 <pre><code>状态机模型是状态以及发生在离散时间点上状态的变化</code></pre>
 
 <p>其实就是状态和状态转移。</p>
 
-<h3 id='id4574'>一般状态机模型</h3>
+<h3 id='id389'>一般状态机模型</h3>
 
-<h4 id='id4575'>定义状态集：</h4>
+<h4 id='id390'>定义状态集：</h4>
 
 <pre><code>A set of states, Q
 An input alphabet Σ
@@ -303,7 +303,7 @@ transition function δ : Q × Σ → Q
 
 <p><img alt='state_Machine1' src='http://m3.img.libdd.com/farm4/2012/1126/23/078444D44E18596F3E8759E339CA9B1007697180F6503_171_214.JPEG' /></p>
 
-<h4 id='id4576'>状态机模型描述：</h4>
+<h4 id='id391'>状态机模型描述：</h4>
 
 <pre><code>A state can be good or bad
       secure or insecure
@@ -315,7 +315,7 @@ Two criteria
 
 <p><img alt='state_Machine2' src='http://m2.img.libdd.com/farm5/2012/1126/23/8A8A2B6DAE39EE46F9E9A95BECB067B8E31448725EE3E_167_223.JPEG' /></p>
 
-<h4 id='id4577'>状态机原则：</h4>
+<h4 id='id392'>状态机原则：</h4>
 
 <pre><code>Describe all secure states
 Describe transitions from secure states
@@ -327,7 +327,7 @@ Prove that no transition leads from secure to insecure</code></pre>
 
 <h3 id='blp'>具体到BLP模型</h3>
 
-<h4 id='id4578'>定义状态集</h4>
+<h4 id='id393'>定义状态集</h4>
 
 <pre><code>a set of subjects S
 a set of objects O
@@ -347,7 +347,7 @@ fS : S → L maximal security level of a subject
 fC : S → L current security level of a subject (fC ≤ fS)
 fO : O → L classiﬁcation of an object</code></pre>
 
-<h4 id='id4579'>安全策略</h4>
+<h4 id='id394'>安全策略</h4>
 
 <p>BLP的安全策略在于：</p>
 
@@ -389,7 +389,7 @@ fO(o) ≤ fS(s)</code></pre>
 
 <p>BIBA模型主要描述的是完整性，BLP模型描述或者说注重的是信息的私密性。信息的完整性就是说：信息的来源是安全的。保证信息的完整性就是BIBA模型的中心。</p>
 
-<h3 id='id4580'>安全策略</h3>
+<h3 id='id395'>安全策略</h3>
 
 <p>BIBA模型主要应用于商业，如银行。举个具体的例子，在学校，任课老师，班长，学生读应安全安级别。老师说：“大家期末都不挂课”。学生会相信。但是如果班长说：“大家期末都不挂课”，大家就不一定相信了。老师亲自给的答案，大家会相信，如果经过班长的手，就会产生疑惑。所以我们为了保证信息的完整性，就规定：信息要“下流”，信息只能是“上读下写”。这样才能保证信息的来源可靠；</p>
 
@@ -405,47 +405,48 @@ fO(o) ≤ fS(s)</code></pre>
 <p>今天某美女分享了一个话题：SleepSort。</p>
 
 <p>见代码：</p>
-<div>
-  <pre><code class='bash'>#!/bin/bash
-function f() {
-    sleep &quot;$1&quot;
-    echo &quot;$1&quot;
-}
-while [ -n &quot;$1&quot; ]
-do
-    f &quot;$1&quot; &amp;
-    shift
-done
-wait</code></pre>
+<div class='highlight'><pre><code class='bash'><span class='c'>#!/bin/bash</span>
+<span class='k'>function </span>f<span class='o'>()</span> <span class='o'>{</span>
+    sleep <span class='s2'>&quot;$1&quot;</span>
+    <span class='nb'>echo</span> <span class='s2'>&quot;$1&quot;</span>
+<span class='o'>}</span>
+<span class='k'>while</span> <span class='o'>[</span> -n <span class='s2'>&quot;$1&quot;</span> <span class='o'>]</span>
+<span class='k'>do</span>
+<span class='k'>    </span>f <span class='s2'>&quot;$1&quot;</span> &amp;
+    <span class='nb'>shift</span>
+<span class='k'>done</span>
+<span class='nb'>wait</span>
+</code></pre>
 </div>
 <p>这个东西真是用来娱乐身心的好东西。</p>
 
-<p>还有是分形图：！<a href='http://m1.img.libdd.com/farm4/2012/1126/23/6F85DEFB1EBAD85D496BCCAD3AAC9EF07FD086AE95681_800_533.jpg' title='分形图'>分形图</a> 神代码： <div>
-  <pre><code class='python'>_                                      =   (
-                                        255,
-                                      lambda
-                               V       ,B,c
-                             :c   and Y(V*V+B,B,  c
-                               -1)if(abs(V)&lt;6)else
-               (              2+c-4*abs(V)**-0.4)/i
-                 )  ;v,      x=1500,1000;C=range(v*x
-                  );import  struct;P=struct.pack;M,\
-            j  ='&lt;QIIHHHH',open('M.bmp','wb').write
-for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
-            i  ,Y=_;j(P('BBB',*(lambda T:(T*80+T**9
-                  *i-950*T  **99,T*70-880*T**18+701*
-                 T  **9     ,T*i**(1-T**45*2)))(sum(
-               [              Y(0,(A%3/3.+X%v+(X/v+
-                               A/3/3.-x/2)/1j)*2.5
-                             /x   -2.7,i)**2 for  \
-                               A       in C
-                                      [:9]])
-                                        /9)
-                                       )   )</code></pre>
-</div></p></p>
+<p>还有是分形图：！<a href='http://m1.img.libdd.com/farm4/2012/1126/23/6F85DEFB1EBAD85D496BCCAD3AAC9EF07FD086AE95681_800_533.jpg' title='分形图'>分形图</a> 神代码：</p>
+<div class='highlight'><pre><code class='python'><span class='n'>_</span>                                      <span class='o'>=</span>   <span class='p'>(</span>
+                                        <span class='mi'>255</span><span class='p'>,</span>
+                                      <span class='k'>lambda</span>
+                               <span class='n'>V</span>       <span class='p'>,</span><span class='n'>B</span><span class='p'>,</span><span class='n'>c</span>
+                             <span class='p'>:</span><span class='n'>c</span>   <span class='ow'>and</span> <span class='n'>Y</span><span class='p'>(</span><span class='n'>V</span><span class='o'>*</span><span class='n'>V</span><span class='o'>+</span><span class='n'>B</span><span class='p'>,</span><span class='n'>B</span><span class='p'>,</span>  <span class='n'>c</span>
+                               <span class='o'>-</span><span class='mi'>1</span><span class='p'>)</span><span class='k'>if</span><span class='p'>(</span><span class='nb'>abs</span><span class='p'>(</span><span class='n'>V</span><span class='p'>)</span><span class='o'>&lt;</span><span class='mi'>6</span><span class='p'>)</span><span class='k'>else</span>
+               <span class='p'>(</span>              <span class='mi'>2</span><span class='o'>+</span><span class='n'>c</span><span class='o'>-</span><span class='mi'>4</span><span class='o'>*</span><span class='nb'>abs</span><span class='p'>(</span><span class='n'>V</span><span class='p'>)</span><span class='o'>**-</span><span class='mf'>0.4</span><span class='p'>)</span><span class='o'>/</span><span class='n'>i</span>
+                 <span class='p'>)</span>  <span class='p'>;</span><span class='n'>v</span><span class='p'>,</span>      <span class='n'>x</span><span class='o'>=</span><span class='mi'>1500</span><span class='p'>,</span><span class='mi'>1000</span><span class='p'>;</span><span class='n'>C</span><span class='o'>=</span><span class='nb'>range</span><span class='p'>(</span><span class='n'>v</span><span class='o'>*</span><span class='n'>x</span>
+                  <span class='p'>);</span><span class='kn'>import</span>  <span class='nn'>struct</span><span class='p'>;</span><span class='n'>P</span><span class='o'>=</span><span class='n'>struct</span><span class='o'>.</span><span class='n'>pack</span><span class='p'>;</span><span class='n'>M</span><span class='p'>,</span>\
+            <span class='n'>j</span>  <span class='o'>=</span><span class='s'>&#39;&lt;QIIHHHH&#39;</span><span class='p'>,</span><span class='nb'>open</span><span class='p'>(</span><span class='s'>&#39;M.bmp&#39;</span><span class='p'>,</span><span class='s'>&#39;wb&#39;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>write</span>
+<span class='k'>for</span> <span class='n'>X</span> <span class='ow'>in</span> <span class='n'>j</span><span class='p'>(</span><span class='s'>&#39;BM&#39;</span><span class='o'>+</span><span class='n'>P</span><span class='p'>(</span><span class='n'>M</span><span class='p'>,</span><span class='n'>v</span><span class='o'>*</span><span class='n'>x</span><span class='o'>*</span><span class='mi'>3</span><span class='o'>+</span><span class='mi'>26</span><span class='p'>,</span><span class='mi'>26</span><span class='p'>,</span><span class='mi'>12</span><span class='p'>,</span><span class='n'>v</span><span class='p'>,</span><span class='n'>x</span><span class='p'>,</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>24</span><span class='p'>))</span><span class='ow'>or</span> <span class='n'>C</span><span class='p'>:</span>
+            <span class='n'>i</span>  <span class='p'>,</span><span class='n'>Y</span><span class='o'>=</span><span class='n'>_</span><span class='p'>;</span><span class='n'>j</span><span class='p'>(</span><span class='n'>P</span><span class='p'>(</span><span class='s'>&#39;BBB&#39;</span><span class='p'>,</span><span class='o'>*</span><span class='p'>(</span><span class='k'>lambda</span> <span class='n'>T</span><span class='p'>:(</span><span class='n'>T</span><span class='o'>*</span><span class='mi'>80</span><span class='o'>+</span><span class='n'>T</span><span class='o'>**</span><span class='mi'>9</span>
+                  <span class='o'>*</span><span class='n'>i</span><span class='o'>-</span><span class='mi'>950</span><span class='o'>*</span><span class='n'>T</span>  <span class='o'>**</span><span class='mi'>99</span><span class='p'>,</span><span class='n'>T</span><span class='o'>*</span><span class='mi'>70</span><span class='o'>-</span><span class='mi'>880</span><span class='o'>*</span><span class='n'>T</span><span class='o'>**</span><span class='mi'>18</span><span class='o'>+</span><span class='mi'>701</span><span class='o'>*</span>
+                 <span class='n'>T</span>  <span class='o'>**</span><span class='mi'>9</span>     <span class='p'>,</span><span class='n'>T</span><span class='o'>*</span><span class='n'>i</span><span class='o'>**</span><span class='p'>(</span><span class='mi'>1</span><span class='o'>-</span><span class='n'>T</span><span class='o'>**</span><span class='mi'>45</span><span class='o'>*</span><span class='mi'>2</span><span class='p'>)))(</span><span class='nb'>sum</span><span class='p'>(</span>
+               <span class='p'>[</span>              <span class='n'>Y</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,(</span><span class='n'>A</span><span class='o'>%</span><span class='mi'>3</span><span class='o'>/</span><span class='mf'>3.</span><span class='o'>+</span><span class='n'>X</span><span class='o'>%</span><span class='n'>v</span><span class='o'>+</span><span class='p'>(</span><span class='n'>X</span><span class='o'>/</span><span class='n'>v</span><span class='o'>+</span>
+                               <span class='n'>A</span><span class='o'>/</span><span class='mi'>3</span><span class='o'>/</span><span class='mf'>3.</span><span class='o'>-</span><span class='n'>x</span><span class='o'>/</span><span class='mi'>2</span><span class='p'>)</span><span class='o'>/</span><span class='mi'>1j</span><span class='p'>)</span><span class='o'>*</span><span class='mf'>2.5</span>
+                             <span class='o'>/</span><span class='n'>x</span>   <span class='o'>-</span><span class='mf'>2.7</span><span class='p'>,</span><span class='n'>i</span><span class='p'>)</span><span class='o'>**</span><span class='mi'>2</span> <span class='k'>for</span>  \
+                               <span class='n'>A</span>       <span class='ow'>in</span> <span class='n'>C</span>
+                                      <span class='p'>[:</span><span class='mi'>9</span><span class='p'>]])</span>
+                                        <span class='o'>/</span><span class='mi'>9</span><span class='p'>)</span>
+                                       <span class='p'>)</span>   <span class='p'>)</span>
+</code></pre>
+</div></p>
 	</div>
 	</br>
-	<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8%E5%AD%A6/2012/11/26/BLPandBIBA.html">Read More</a>
+	<a href="/计算机安全学/2012/11/26/BLPandBIBA.html">Read More</a>
 	</br>
 	</br>
 
@@ -455,7 +456,7 @@ for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
 	<h2 class="post-title">
 		<a href="/Jekyll/2012/11/09/learn-about-markdown.html">learn about the markdown</a>
 	</h2><div id = "post">
-	<p><h2 id='id4558'>特殊字符自动转换</h2>
+	<p><h2 id='id373'>特殊字符自动转换</h2>
 
 <p>在写 <code>&lt;</code> 和 <code>&amp;</code> 时要转成：<code>&amp;lt;</code> 和 <code>&amp;amp;</code></p>
 
@@ -463,11 +464,11 @@ for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
 <p>主要注意在插入url时对<code>&amp;</code>的处理～</p>
 </blockquote>
 <hr />
-<h2 id='id4559'>标题</h2>
+<h2 id='id374'>标题</h2>
 
 <p>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - （第二阶标题）; <br />类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶</p>
 <hr />
-<h2 id='id4560'>区段引用</h2>
+<h2 id='id375'>区段引用</h2>
 
 <pre><code>&gt; hello world;
 &gt; Johnbug is the most handsome man in the world.
@@ -499,7 +500,7 @@ for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
 </blockquote>
 </blockquote>
 <hr />
-<h2 id='id4561'>列表</h2>
+<h2 id='id376'>列表</h2>
 
 <ul>
 <li>first blood</li>
@@ -521,7 +522,7 @@ for X in j('BM'+P(M,v*x*3+26,26,12,v,x,1,24))or C:
 <li>happy dota!</li>
 </ul>
 <hr />
-<h2 id='id4562'>代码</h2>
+<h2 id='id377'>代码</h2>
 
 <pre><code>#include &lt;stdio.h&gt;
 
@@ -532,28 +533,28 @@ int main(void)
 
 <p>段内代码: <code>`</code></p>
 <hr />
-<h2 id='id4563'>分割线</h2>
+<h2 id='id378'>分割线</h2>
 
 <pre><code>* * *
 - - -
 ***
 __________</code></pre>
 <hr />
-<h2 id='id4564'>链接</h2>
+<h2 id='id379'>链接</h2>
 
-<h3 id='id4565'>行内式</h3>
+<h3 id='id380'>行内式</h3>
 
 <p>Click to visit my weibo <a href='http://weibo.com/johnbug'>Johnbug</a></p>
 
 <pre><code>Click to visti my weibo [Johnbug](http://weibo.com/johnbug)</code></pre>
 
-<h3 id='id4566'>参考式</h3>
+<h3 id='id381'>参考式</h3>
 
 <pre><code>This is the link to the [Top] [top] Link.</code></pre>
 
 <p>go to <a href='http://zzyjohnbug.github.com/'>My github blog</a> and <a href='http://github.com/zzyJOHNBUG/'>My github</a>; <br />这个很好用啊有木有；</p>
 <hr />
-<h2 id='id4567'>图片</h2>
+<h2 id='id382'>图片</h2>
 
 <pre><code>![Alt Text](path of the picture &quot;Option title&quot;)</code></pre>
 
@@ -565,17 +566,17 @@ __________</code></pre>
 
 <p>到目前为止， Markdown 还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 <code>&lt;img&gt;</code> 标签。</p>
 <hr />
-<h2 id='id4568'>代码高亮</h2>
+<h2 id='id383'>代码高亮</h2>
 
 <p>看到这两个blog才学会的！<a href='http://zyzhang.github.com/blog/2012/08/31/highlight-with-Jekyll-and-Pygments/'>用Jekyll和Pygments配置代码高亮</a> 和 <a href='http://jiyeqian.github.com/2012/07/host-your-pages-at-github-using-jekyll/'>基于jekyll的github建站指南</a></p>
-<div>
-  <pre><code class='c'>#include &lt;stdio.h&gt;    
-int main(void) 
-{
-   puts(&quot;hello,world&quot;);
-}</code></pre>
+<div class='highlight'><pre><code class='c'><span class='cp'>#include &lt;stdio.h&gt;    </span>
+<span class='kt'>int</span> <span class='nf'>main</span><span class='p'>(</span><span class='kt'>void</span><span class='p'>)</span> 
+<span class='p'>{</span>
+   <span class='n'>puts</span><span class='p'>(</span><span class='s'>&quot;hello,world&quot;</span><span class='p'>);</span>
+<span class='p'>}</span>
+</code></pre>
 </div><hr />
-<h2 id='id4569'>文章格式：</h2>
+<h2 id='id384'>文章格式：</h2>
 
 <pre><code>---	
 layout: post
@@ -616,7 +617,7 @@ category: [笔记]
 			</br>
 		
 			26 Nov 2012
-			<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8%E5%AD%A6/2012/11/26/BLPandBIBA.html">计算机安全学：BLP模型和BIBA模型</a>
+			<a href="/计算机安全学/2012/11/26/BLPandBIBA.html">计算机安全学：BLP模型和BIBA模型</a>
 			</br>
 		
 			09 Nov 2012
