@@ -15,24 +15,28 @@
 		<p class = "pos_left">HOME</p>
 		</div>
 		<div id = "container">
-		<div id = "main_body">
-			{{content}}
-		</div>
-		<div id = "side">
-		</br></br>
-		<img src = "/assets/image/mark.png" width="100" height="80">
-		<p class="little"><a size = "19px" href="http://weibo.com/johnbug">Weibo</a>
-		<p class="little"><a href="https://github.com/Johnbug">github</a>
-		<p class="little"><a href="https://mail.google.com">zzyjohnbug@gmail.com</a>
-		<h3>Recent Posts</h3>
-		{% for post in site.posts limit:8 %}
-			{{ post.date | date_to_string}}
-			<a href="{{ post.url }}">{{ post.title }}</a>
-			</br>
-		{% endfor %}
-		</div>
-		</div>
-		<p class = "little"><a href = "/archive.html">View All</a></p>
+			<div id = "main_body">
+				{{content}}
+				<p class = "little"><a href = "/archive.html">View All</a></p>
+			</div>
+			<div id = "side">
+				</br></br>
+				<div id = "cata">
+					<img src = "/assets/image/mark.png" width="100" height="80">
+					<p class="little"><a size = "19px" href="http://weibo.com/johnbug">Weibo</a>
+					<p class="little"><a href="https://github.com/Johnbug">github</a>
+					<p class="little"><a href="https://mail.google.com">zzyjohnbug@gmail.com</a>
+				</div>
+				<div id = "cata">
+					<h3>Recent Posts</h3>
+					{% for post in site.posts limit:8 %}
+					{{ post.date | date:"%Y.%m.%d"}}
+					<a href="{{ post.url }}">{{ post.title }}</a>
+					</br>
+					{% endfor %}
+				</div>
+			</div>
+		</div>	
 		<hr />
 		<div id = "foot">
 		<p class = "little">Copyright © &nbsp <a href = "http://weibo.com/johnbug">Johnbug</a> &nbsp&nbsp&nbsp Powered by <a href = "http://jekyllrb.com/">Jekyll</a></p>

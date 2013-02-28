@@ -12,18 +12,17 @@
 	<p class = "archive"><a href = "/archive.html">Archive</a></p>
 	<div id = "frame">
 		<div id = "head">
-		<p class = "pos_left">POST</p>
+			<p class = "pos_left">POST</p>
 		</div>
 		<div id = "container">
-		<div id = "main_body">
-		
-			<div class="post-meta">
-	    <p class="date"><i>09 Nov 2012</i></p>
-	</div>
-	<h2 class="post-title">
-		<a href="">learn about the markdown</a>
-	</h2>
-	<p><h2 id='id409'>特殊字符自动转换</h2>
+			<div id = "main_body">
+				<div class="post-meta">
+					<p class="date"><i>09 Nov 2012</i></p>
+				</div>
+				<h1 class="post-title">
+				<a href="">learn about the markdown</a>
+				</h1>
+				<p><h2 id='id2451'>特殊字符自动转换</h2>
 
 <p>在写 <code>&lt;</code> 和 <code>&amp;</code> 时要转成：<code>&amp;lt;</code> 和 <code>&amp;amp;</code></p>
 
@@ -31,11 +30,11 @@
 <p>主要注意在插入url时对<code>&amp;</code>的处理～</p>
 </blockquote>
 <hr />
-<h2 id='id410'>标题</h2>
+<h2 id='id2452'>标题</h2>
 
 <p>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - （第二阶标题）; <br />类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶</p>
 <hr />
-<h2 id='id411'>区段引用</h2>
+<h2 id='id2453'>区段引用</h2>
 
 <pre><code>&gt; hello world;
 &gt; Johnbug is the most handsome man in the world.
@@ -67,7 +66,7 @@
 </blockquote>
 </blockquote>
 <hr />
-<h2 id='id412'>列表</h2>
+<h2 id='id2454'>列表</h2>
 
 <ul>
 <li>first blood</li>
@@ -89,7 +88,7 @@
 <li>happy dota!</li>
 </ul>
 <hr />
-<h2 id='id413'>代码</h2>
+<h2 id='id2455'>代码</h2>
 
 <pre><code>#include &lt;stdio.h&gt;
 
@@ -100,28 +99,28 @@ int main(void)
 
 <p>段内代码: <code>`</code></p>
 <hr />
-<h2 id='id414'>分割线</h2>
+<h2 id='id2456'>分割线</h2>
 
 <pre><code>* * *
 - - -
 ***
 __________</code></pre>
 <hr />
-<h2 id='id415'>链接</h2>
+<h2 id='id2457'>链接</h2>
 
-<h3 id='id416'>行内式</h3>
+<h3 id='id2458'>行内式</h3>
 
 <p>Click to visit my weibo <a href='http://weibo.com/johnbug'>Johnbug</a></p>
 
 <pre><code>Click to visti my weibo [Johnbug](http://weibo.com/johnbug)</code></pre>
 
-<h3 id='id417'>参考式</h3>
+<h3 id='id2459'>参考式</h3>
 
 <pre><code>This is the link to the [Top] [top] Link.</code></pre>
 
 <p>go to <a href='http://zzyjohnbug.github.com/'>My github blog</a> and <a href='http://github.com/zzyJOHNBUG/'>My github</a>; <br />这个很好用啊有木有；</p>
 <hr />
-<h2 id='id418'>图片</h2>
+<h2 id='id2460'>图片</h2>
 
 <pre><code>![Alt Text](path of the picture &quot;Option title&quot;)</code></pre>
 
@@ -133,17 +132,17 @@ __________</code></pre>
 
 <p>到目前为止， Markdown 还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 <code>&lt;img&gt;</code> 标签。</p>
 <hr />
-<h2 id='id419'>代码高亮</h2>
+<h2 id='id2461'>代码高亮</h2>
 
 <p>看到这两个blog才学会的！<a href='http://zyzhang.github.com/blog/2012/08/31/highlight-with-Jekyll-and-Pygments/'>用Jekyll和Pygments配置代码高亮</a> 和 <a href='http://jiyeqian.github.com/2012/07/host-your-pages-at-github-using-jekyll/'>基于jekyll的github建站指南</a></p>
-<div class='highlight'><pre><code class='c'><span class='cp'>#include &lt;stdio.h&gt;    </span>
-<span class='kt'>int</span> <span class='nf'>main</span><span class='p'>(</span><span class='kt'>void</span><span class='p'>)</span> 
-<span class='p'>{</span>
-   <span class='n'>puts</span><span class='p'>(</span><span class='s'>&quot;hello,world&quot;</span><span class='p'>);</span>
-<span class='p'>}</span>
-</code></pre>
+<div>
+  <pre><code class='c'>#include &lt;stdio.h&gt;    
+int main(void) 
+{
+   puts(&quot;hello,world&quot;);
+}</code></pre>
 </div><hr />
-<h2 id='id420'>文章格式：</h2>
+<h2 id='id2462'>文章格式：</h2>
 
 <pre><code>---	
 layout: post
@@ -151,48 +150,52 @@ title: learn about the markdown
 tags: [入门,笔记,markdown]
 category: [笔记]
 ---</code></pre></p>
+			</div>
+			<div id = "side">
+				</br></br>
+				<div id = "cata">
+					<img src = "/assets/image/mark.png" width="100" height="80"></br>
+					<p class="little"><a size = "19px" href="http://weibo.com/johnbug">Weibo</a>
+					<p class="little"><a href="https://github.com/Johnbug">github</a>
+					<p class="little"><a href="https://mail.google.com">zzyjohnbug@gmail.com</a>
+				</div>
+				<div id = "cata">
+					<h3>Recent Posts</h3>
+					
+					2013.02.28
+					<a href="/2013/02/28/redo-github-pages.html">重建Github Pages，简单一点点</a>
+					</br>
+					
+					2013.02.22
+					<a href="/Python/2013/02/22/python_1.html">Python学习(1)</a>
+					</br>
+					
+					2013.02.19
+					<a href="/JAVA/2013/02/19/jxl.html">用Java操作Excel——jxl.jar的理解</a>
+					</br>
+					
+					2013.02.06
+					<a href="/movies/2013/02/06/My-Favorite-Films.html">《英雄本色》和《死亡诗社》</a>
+					</br>
+					
+					2013.02.05
+					<a href="/Jekyll/2013/02/05/blogging-using-Jekyll.html">用Jekyll和github写blog的一些理解</a>
+					</br>
+					
+					2012.11.26
+					<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8%E5%AD%A6/2012/11/26/BLPandBIBA.html">计算机安全学：BLP模型和BIBA模型</a>
+					</br>
+					
+					2012.11.09
+					<a href="/Jekyll/2012/11/09/learn-about-markdown.html">learn about the markdown</a>
+					</br>
+					
+				</div>
+			</div>
+			</br>
+			</br>
 		</div>
-		<div id = "side">
-		</br></br>
-		<img src = "/assets/image/mark.png" width="100" height="80"></br>
-		<p class="little"><a size = "19px" href="http://weibo.com/johnbug">Weibo</a>
-		<p class="little"><a href="https://github.com/Johnbug">github</a>
-		<p class="little"><a href="https://mail.google.com">zzyjohnbug@gmail.com</a>
-		<h3>Recent Posts</h3>
-		
-			28 Feb 2013
-			<a href="/2013/02/28/redo-github-pages.html">重建Github Pages，简单一点点</a>
-			</br>
-		
-			22 Feb 2013
-			<a href="/Python/2013/02/22/python_1.html">Python学习(1)</a>
-			</br>
-		
-			19 Feb 2013
-			<a href="/JAVA/2013/02/19/jxl.html">用Java操作Excel——jxl.jar的理解</a>
-			</br>
-		
-			06 Feb 2013
-			<a href="/movies/2013/02/06/My-Favorite-Films.html">《英雄本色》和《死亡诗社》</a>
-			</br>
-		
-			05 Feb 2013
-			<a href="/Jekyll/2013/02/05/blogging-using-Jekyll.html">用Jekyll和github写blog的一些理解</a>
-			</br>
-		
-			26 Nov 2012
-			<a href="/计算机安全学/2012/11/26/BLPandBIBA.html">计算机安全学：BLP模型和BIBA模型</a>
-			</br>
-		
-			09 Nov 2012
-			<a href="/Jekyll/2012/11/09/learn-about-markdown.html">learn about the markdown</a>
-			</br>
-		
-		</div>
-		</div>
-		</br>
-		</br>
-		<hr />
+			<hr />
 		<div id = "foot">
 		<p class = "little">Copyright © &nbsp <a href = "http://weibo.com/johnbug">Johnbug</a> &nbsp&nbsp&nbsp Powered by <a href = "http://jekyllrb.com/">Jekyll</a></p>
 		</div>

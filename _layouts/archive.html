@@ -15,23 +15,26 @@
 		<p class = "pos_left">ARCHIVE</p>
 		</div>
 		<div id = "container">
-		<div id = "main_body">
-		</br>
-			{{content}}
-		</div>
-		<div id = "side">
-		</br></br>
-		<img src = "/assets/image/mark.png" width="100" height="80">
-		<p class="little"><a size = "19px" href="http://weibo.com/johnbug">Weibo</a>
-		<p class="little"><a href="https://github.com/Johnbug">github</a>
-		<p class="little"><a href="https://mail.google.com">zzyjohnbug@gmail.com</a>
-		<h3>Recent Posts</h3>
-		{% for post in site.posts limit:8 %}
-			{{ post.date | date_to_string}}
-			<a href="{{ post.url }}">{{ post.title }}</a>
-			</br>
-		{% endfor %}
-		</div>
+			<div id = "main_body">
+				{{content}}
+			</div>
+			<div id = "side">
+				</br></br>
+				<div id = "cata">
+					<img src = "/assets/image/mark.png" width="100" height="80">
+					<p class="little"><a size = "19px" href="http://weibo.com/johnbug">Weibo</a>
+					<p class="little"><a href="https://github.com/Johnbug">github</a>
+					<p class="little"><a href="https://mail.google.com">zzyjohnbug@gmail.com</a>
+				</div>
+				<div id = "recent">
+					<h3>Recent Posts</h3>
+					{% for post in site.posts limit:8 %}
+					{{ post.date | date:"%Y.%m.%d"}}
+					<a href="{{ post.url }}">{{ post.title }}</a>
+					</br>
+					{% endfor %}
+				</div>
+			</div>
 		</div>
 		</br>
 		</br>

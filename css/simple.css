@@ -2,7 +2,7 @@
 /*main frame*/
 body{
 	background-color:white;
-	font-family: "momo","liugongquan","qigong";
+	font-family: "momo","qigong";
 }
 #frame{
 	position: absolute;
@@ -11,7 +11,7 @@ body{
 	width: 70%;
 	height: 578px;
 	font-size:19px;
-	font-family: "momo","liugongquan","qigong";
+	font-family: "momo","qigong";
 	background:#FFFFFF;
 }
 /*header*/
@@ -42,8 +42,8 @@ body{
 	font-size:15px;
 	width:30%;
 	float:right;
-	background:#FFFFFF;
-	font-family: "liugongquan","qigong";
+	background:#fff;
+	font-family: "momo","qigong";
 }
 /*footer*/
 #foot{
@@ -54,9 +54,15 @@ body{
 	text-align:center;
 }
 #post{
-	border-bottom: 1px solid #E6E6E6;
+	border-bottom: 2px solid #E6E6E6;
+	border-left: 2px solid #E6E6E6;
+	border-left-style:dashed;
+	border-bottom-style:dashed;
 	height:870px;
 	overflow:hidden;
+	left:-8px;
+	position: relative;
+	padding-left: 15px;
 }
 #about {
   width: 454px;
@@ -94,7 +100,23 @@ body{
 	left:15%;
 	top: 20%;
 	position: absolute;
-	font-size:25px;
+	font-size:20px;
+}
+#recent{
+	border-left: 2px solid #E6E6E6;
+	border-left-style:dashed;
+	left:-8px;
+	position: relative;
+	padding-left: 15px;
+}
+#cata{
+	border-bottom: 2px solid #E6E6E6;
+	border-left: 2px solid #E6E6E6;
+	border-left-style:dashed;
+	border-bottom-style:dashed;
+	left:-8px;
+	position: relative;
+	padding-left: 15px;
 }
 /*————————————————————————————————————————————*/
 /*class design*/
@@ -189,11 +211,16 @@ h2.post-title{
  src: url('/assets/fonts/momo/DejaVuSansMono.ttf') format('truetype');
 } 
 @font-face {
+ font-family: 'bb';
+ src: url('/assets/fonts/bb/bb.TTF') format('truetype');
+} 
+@font-face {
  font-family: 'dog';
  src: url('/assets/fonts/GoodDog/GoodDog.otf');
  unicode-range: U+41-5A, U+61-7A, U+C0-FF;
 } 
 /* @end */
+/* @normal part */
 a {
   color: orange;
   text-decoration: none;
@@ -215,7 +242,7 @@ width:100%;color:#0d0015;border:1px dashed #cccccc;
 
 code,pre{
 	padding:0 3px 2px;
-	font-family:"momo","liugongquan";
+	font-family:"momo","qigong";
 	color:#000;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
@@ -251,36 +278,10 @@ pre code{
 	background-color:transparent;
 	border:0;
 }
-
-/*
-code, pre, .gist, .gist-data, .gist-meta {
-  font-family: 'Colab', "liugongquan", "Courier New" ;
-  font-size: 21px ;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
+h2
+{
+text-shadow: 5px 5px 3px #E8ECEF;
 }
-/* @group pre, code */
-/*
-  pre, code {
-    background-color: #f8f8ff;
-    border: 1px solid #dedede;
-    padding: 1px 2px;
-  }
-  pre {
-    padding: 0.25em 0.5em;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-    pre code {
-      background-color: none;
-      border: none;
-      padding: 0px;
-    }
-
-/* @end */
-
-/* @group blockquote */
 
  blockquote {
 line-height:normal;

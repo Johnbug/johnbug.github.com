@@ -251,6 +251,10 @@ pre code{
 	background-color:transparent;
 	border:0;
 }
+h2
+{
+text-shadow: 5px 5px 3px #E8ECEF;
+}
 
 /*
 code, pre, .gist, .gist-data, .gist-meta {
