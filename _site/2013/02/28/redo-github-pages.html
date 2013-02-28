@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>重建Github Pages，简单一点点</title>
+<link href="/css/simple.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/css/pygments1.css">
+</head>
+<body>
+	<p class = "Home"><a href = "/index.html">Home</a></p>
+	<p class = "about"><a href = "/about_me.html">About</a></p>
+	<p class = "archive"><a href = "/archive.html">Archive</a></p>
+	<div id = "frame">
+		<div id = "head">
+		<p class = "pos_left">POST</p>
+		</div>
+		<div id = "container">
+		<div id = "main_body">
+		
+			<div class="post-meta">
+	    <p class="date"><i>28 Feb 2013</i></p>
+	</div>
+	<h2 class="post-title">
+		<a href="">重建Github Pages，简单一点点</a>
+	</h2>
+	<p><h2 id='id440'>摘要</h2>
+
+<p>对自己以前设计的<code>v字仇杀队</code>风格的博客已经审美疲劳，疲劳了那口味略重的颜色和粗大的设计，疲劳了美感不足的总体设计，疲劳了文章展示，疲劳了缺乏统一格式的文章。我决定要换掉这个主题。龙哥推荐了一个<a href='http://jimeh.me/blog/'>blog</a>给我,我觉得很有感觉，风格很简洁令人印象深刻。于是我想模仿这个页面做一个简单风格的博客。过程中参考了此博主的代码，自己定义简单的布局，简单的功能。css3，自定义字体，404 pages等都是我新的收获，对css有了新的理解。</p>
+<img height='500px' src='/assets/image/2013-2-28-logo.jpg' width='500px' /><hr />
+<h2 id='id441'>对文章的格式定义</h2>
+
+<p>由于首页设定了文章的div的id选择器：</p>
+<div class='highlight'><pre><code class='css'><span class='nf'>#post</span><span class='p'>{</span>
+	<span class='k'>border-bottom</span><span class='o'>:</span> <span class='m'>1px</span> <span class='k'>solid</span> <span class='m'>#E6E6E6</span><span class='p'>;</span>
+	<span class='k'>height</span><span class='o'>:</span><span class='m'>870px</span><span class='p'>;</span>
+	<span class='k'>overflow</span><span class='o'>:</span><span class='k'>hidden</span><span class='p'>;</span>
+<span class='p'>}</span>
+</code></pre>
+</div>
+<p>所以文章的首部为一段摘要和一副图片。 每个新话题设定一个标题，为h2。 结尾有一段总结及附上一段好的文字，最后有一个<code>&lt;/br&gt;</code>,<code>&lt;hr /&gt;</code></p>
+<hr />
+<h2 id='id442'>自定义字体</h2>
+
+<p>用到的是css3的<code>@font-face</code>，英文和中文分开使用。<a href='http://www.fontsquirrel.com'>fontsquirrel</a>是一个免费的字体网站，里面的英文字体的确不错，当然<a href='http://www.google.com/webfonts'>Google Web Fonts</a>字体也是不错的，它的使用方法google一下。 需要注意的是，不同的浏览器的支持需要不同的字体格式，字体的格式可以用字体格式转换器转换这个<a href='http://www.fontsquirrel.com/tools/webfont-generator'>webfont-generator</a>可以用，但是不支持太大的字体格式。 <a href='http://www.w3school.com.cn/css3/css3_fonts.asp'>@font-face</a>语法在w3school自学。</p>
+<hr />
+<h2 id='id443'>效率！效率！</h2>
+
+<p>这次的重建我还是花费了很多的时间，这么简单的页面其实不应该花费我的那么的时间！只不过找字体和各种调整花费了一些时间有点让我无语！一开始以为github的jekyll引擎不支持.ttf格式的字体，后来才发现原来是我自己的字体格式是.TTF！晕，在windows下浑然不知！在Ubuntu下是一致的！这里各种各样的问题还是逃不开自己效率太低的问题！接下来要寻求一些提高效率的方法。</p>
+
+<blockquote>
+<p>这 一代中国年轻人可能面临着某种吊诡的自我矛盾，一方面，我们是前所未有早衰的一代，“十八岁开始苍老”，二十岁开始怀旧，尽管仍在青春，“你爱谈天我爱 笑”的时光竟成了一代人的集体乡愁；另一方面，我们拼命的想要向前奔跑，想要稳定、无虑的生活，想要拥抱住某种确定感，焦虑着，想要立即像三四十岁的人那 样，车房不缺，事业成功。 你，你，你， 真的享受年轻吗？为何你一边怀旧一边还在努力奔跑？ 你，你，你， 真的热爱冒险和漂泊吗？为什么将理想纳给稳定和房产证做投名状？ 你，你，你， 真的珍惜可能性吗？为何我看到你宁肯早衰也要拥抱“生活的终结”？ 生活更美好的可能性，难道不在于这缓缓经历的一步步、默默感知的一天天，而在于未来的宏大勾画？</p>
+</blockquote></p>
+		</div>
+		<div id = "side">
+		</br></br>
+		<img src = "/assets/image/mark.png" width="100" height="80"></br>
+		<p class="little"><a size = "19px" href="http://weibo.com/johnbug">Weibo</a>
+		<p class="little"><a href="https://github.com/Johnbug">github</a>
+		<p class="little"><a href="https://mail.google.com">zzyjohnbug@gmail.com</a>
+		<h3>Recent Posts</h3>
+		
+			28 Feb 2013
+			<a href="/2013/02/28/redo-github-pages.html">重建Github Pages，简单一点点</a>
+			</br>
+		
+			22 Feb 2013
+			<a href="/Python/2013/02/22/python_1.html">Python学习(1)</a>
+			</br>
+		
+			19 Feb 2013
+			<a href="/JAVA/2013/02/19/jxl.html">用Java操作Excel——jxl.jar的理解</a>
+			</br>
+		
+			06 Feb 2013
+			<a href="/movies/2013/02/06/My-Favorite-Films.html">《英雄本色》和《死亡诗社》</a>
+			</br>
+		
+			05 Feb 2013
+			<a href="/Jekyll/2013/02/05/blogging-using-Jekyll.html">用Jekyll和github写blog的一些理解</a>
+			</br>
+		
+			26 Nov 2012
+			<a href="/计算机安全学/2012/11/26/BLPandBIBA.html">计算机安全学：BLP模型和BIBA模型</a>
+			</br>
+		
+			09 Nov 2012
+			<a href="/Jekyll/2012/11/09/learn-about-markdown.html">learn about the markdown</a>
+			</br>
+		
+		</div>
+		</div>
+		</br>
+		</br>
+		<hr />
+		<div id = "foot">
+		<p class = "little">Copyright © &nbsp <a href = "http://weibo.com/johnbug">Johnbug</a> &nbsp&nbsp&nbsp Powered by <a href = "http://jekyllrb.com/">Jekyll</a></p>
+		</div>
+	</div>
+</body>
+</html>

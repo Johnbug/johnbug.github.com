@@ -21,7 +21,7 @@ body{
 	font-size: 100%;
 	float: left;
 	background:#FFFFFF;
-	font-family:"momo";
+	font-family:"dog";
 }
 /*main container*/
 #container{
@@ -55,7 +55,7 @@ body{
 }
 #post{
 	border-bottom: 1px solid #E6E6E6;
-	height:700px;
+	height:870px;
 	overflow:hidden;
 }
 #about {
@@ -88,6 +88,13 @@ body{
   }
 #archive{
 	font-size:13px;
+}
+#page404{
+	width:70%;
+	left:15%;
+	top: 20%;
+	position: absolute;
+	font-size:25px;
 }
 /*————————————————————————————————————————————*/
 /*class design*/
@@ -180,6 +187,10 @@ h2.post-title{
 @font-face {
  font-family: 'momo';
  src: url('/assets/fonts/momo/DejaVuSansMono.ttf') format('truetype');
+} 
+@font-face {
+ font-family: 'dog';
+ src: url('/assets/fonts/GoodDog/GoodDog.otf');
  unicode-range: U+41-5A, U+61-7A, U+C0-FF;
 } 
 /* @end */
