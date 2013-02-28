@@ -4,7 +4,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>计算机安全学：BLP模型和BIBA模型</title>
 <link href="/css/simple.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="/css/pygments.css">
+<link rel="stylesheet" href="/css/pygments1.css">
 </head>
 <body>
 	<p class = "Home"><a href = "/index.html">Home</a></p>
@@ -23,7 +23,7 @@
 	<h2 class="post-title">
 		<a href="">计算机安全学：BLP模型和BIBA模型</a>
 	</h2>
-	<p><h1 id='id385'>今日签到</h1>
+	<p><h1 id='id75'>今日签到</h1>
 
 <p>复习今天计算机安全学的课，昨天准备今天的ppt花费了很多时间，但也能大致理解BLP模型和BIBA模型，辛苦队友们了。大家一起学习时焕发的激情让我想到如果我们成立的小组如果能每天都组织去学习，共同探讨一些东西，是提高学习效率的好方法，不再是一个人闭门造车。那些闭门造车的只要弄懂了某些知识就好像得到什么宝一样不和别人分享。这是非常不利的。当然很多牛人对于知识的分享都是比较懒惰的，只能说他们懒惰了！</p>
 
@@ -41,26 +41,26 @@ BIBA模型；</code></pre>
 
 <p>关键词： + 状态机模型 + 机密性 + 访问控制矩阵 + 安全级别 + 安全策略 + 安全模型 + 信息流向</p>
 
-<h2 id='id386'>安全策略</h2>
+<h2 id='id76'>安全策略</h2>
 
 <pre><code>安全策略为一个安全系统或一组安全系统定义安全；安全策略考虑机密性，完整性，可用性；
 面对特定的安全需求得出的安全策略，在安全系统中定义什么才叫安全，这就是所谓的安全策略。</code></pre>
 
-<h2 id='id387'>安全模型</h2>
+<h2 id='id77'>安全模型</h2>
 
 <pre><code>表示一个特定策略或一组策略的模型。</code></pre>
 
 <p>安全模型通常是形式化的描述安全策略。为此需要对系统进行建模，有三种主要的模型。 1. 状态机模型 2. 信息流模型 3. 不干扰模型</p>
 
-<h2 id='id388'>状态机模型</h2>
+<h2 id='id78'>状态机模型</h2>
 
 <pre><code>状态机模型是状态以及发生在离散时间点上状态的变化</code></pre>
 
 <p>其实就是状态和状态转移。</p>
 
-<h3 id='id389'>一般状态机模型</h3>
+<h3 id='id79'>一般状态机模型</h3>
 
-<h4 id='id390'>定义状态集：</h4>
+<h4 id='id80'>定义状态集：</h4>
 
 <pre><code>A set of states, Q
 An input alphabet Σ
@@ -71,7 +71,7 @@ transition function δ : Q × Σ → Q
 
 <p><img alt='state_Machine1' src='http://m3.img.libdd.com/farm4/2012/1126/23/078444D44E18596F3E8759E339CA9B1007697180F6503_171_214.JPEG' /></p>
 
-<h4 id='id391'>状态机模型描述：</h4>
+<h4 id='id81'>状态机模型描述：</h4>
 
 <pre><code>A state can be good or bad
       secure or insecure
@@ -83,7 +83,7 @@ Two criteria
 
 <p><img alt='state_Machine2' src='http://m2.img.libdd.com/farm5/2012/1126/23/8A8A2B6DAE39EE46F9E9A95BECB067B8E31448725EE3E_167_223.JPEG' /></p>
 
-<h4 id='id392'>状态机原则：</h4>
+<h4 id='id82'>状态机原则：</h4>
 
 <pre><code>Describe all secure states
 Describe transitions from secure states
@@ -95,7 +95,7 @@ Prove that no transition leads from secure to insecure</code></pre>
 
 <h3 id='blp'>具体到BLP模型</h3>
 
-<h4 id='id393'>定义状态集</h4>
+<h4 id='id83'>定义状态集</h4>
 
 <pre><code>a set of subjects S
 a set of objects O
@@ -115,7 +115,7 @@ fS : S → L maximal security level of a subject
 fC : S → L current security level of a subject (fC ≤ fS)
 fO : O → L classiﬁcation of an object</code></pre>
 
-<h4 id='id394'>安全策略</h4>
+<h4 id='id84'>安全策略</h4>
 
 <p>BLP的安全策略在于：</p>
 
@@ -157,7 +157,7 @@ fO(o) ≤ fS(s)</code></pre>
 
 <p>BIBA模型主要描述的是完整性，BLP模型描述或者说注重的是信息的私密性。信息的完整性就是说：信息的来源是安全的。保证信息的完整性就是BIBA模型的中心。</p>
 
-<h3 id='id395'>安全策略</h3>
+<h3 id='id85'>安全策略</h3>
 
 <p>BIBA模型主要应用于商业，如银行。举个具体的例子，在学校，任课老师，班长，学生读应安全安级别。老师说：“大家期末都不挂课”。学生会相信。但是如果班长说：“大家期末都不挂课”，大家就不一定相信了。老师亲自给的答案，大家会相信，如果经过班长的手，就会产生疑惑。所以我们为了保证信息的完整性，就规定：信息要“下流”，信息只能是“上读下写”。这样才能保证信息的来源可靠；</p>
 
