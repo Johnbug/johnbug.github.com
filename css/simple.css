@@ -2,7 +2,7 @@
 /*main frame*/
 body{
 	background-color:white;
-	font-family: "mono","qigong";
+	font-family: "jj","qigong";
 }
 #frame{
 	position: absolute;
@@ -11,7 +11,7 @@ body{
 	width: 70%;
 	height: 578px;
 	font-size:19px;
-	font-family: "mono","qigong";
+	font-family: "jj","qigong";
 	background:#FFFFFF;
 }
 /*header*/
@@ -43,7 +43,7 @@ body{
 	width:30%;
 	float:right;
 	background:#fff;
-	font-family: "mono","qigong";
+	font-family: "jj","qigong";
 }
 /*footer*/
 #foot{
@@ -222,6 +222,10 @@ h2.post-title{
 @font-face {
  font-family: 'mono';
  src: url('/assets/fonts/ubuntumono/UbuntuMono-R.ttf');
+} 
+@font-face {
+ font-family: 'jj';
+ src: url('/assets/fonts/jj/JosefinSansStd-Light.otf');
 } 
 /* @end */
 /* @normal part */
