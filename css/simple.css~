@@ -2,7 +2,7 @@
 /*main frame*/
 body{
 	background-color:white;
-	font-family: "jj","qigong";
+	font-family: "jj","微软雅黑";
 }
 #frame{
 	position: absolute;
@@ -11,7 +11,7 @@ body{
 	width: 70%;
 	height: 578px;
 	font-size:19px;
-	font-family: "jj","qigong";
+	font-family: "jj","微软雅黑";
 	background:#FFFFFF;
 }
 /*header*/
@@ -43,7 +43,7 @@ body{
 	width:30%;
 	float:right;
 	background:#fff;
-	font-family: "jj","qigong";
+	font-family: "jj","微软雅黑";
 }
 /*footer*/
 #foot{
@@ -250,7 +250,7 @@ width:100%;color:#0d0015;border:1px dashed #cccccc;
 
 code,pre{
 	padding:0 3px 2px;
-	font-family:"mono","qigong";
+	font-family:"jj","微软雅黑";
 	color:#000;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;

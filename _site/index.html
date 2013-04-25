@@ -18,16 +18,341 @@
 			<div id = "main_body">
 				
 	<div class="post-meta">
+	    <p class="date"><i>20 Apr 2013</i></p>
+	</div>
+	<h1 class="post-title">
+		<a href="/2013/04/20/learn-http.html">http复习</a>
+	</h1><div id = "post">
+	<p><h2 id='id53'>对不起，老师！</h2>
+
+<p>这次去TX一面的惨痛经历让我决心好好地对基础知识认认真真的研究一番。零零散散花了几天的时间理解HTTP协议，过程中很多知识的生疏令我直呼：“对不起，老师。”现阶段自己对HTTP的理解也是停留在“无文档阅读，无实践操作”的阶段！不断Google，不断翻书拿出很零散的知识。但是我对知识全盘理解比较热衷，而且这片blog比较少新的理解和思考，只是对知识的默写罢了，接下来项目的进行可能对自己的理解会有长足的加深，到时一点点补充和改进。必须吐槽自己的学习能力和效率，太低了，但是我是踏实的，认真的！</p>
+
+<h2 id='mindmap_first'>Mindmap First</h2>
+
+<p>这是本文章的思维导图： <img height='550px' width='600px' src='/assets/image/HTTP.jpg' /></p>
+
+<h2 id='http'>从万维网讲起，为什么有HTTP？</h2>
+
+<p>万维网www<code>World Wide Web</code>，可以说是一个一个链接组成的大世界，深入看进去却是一台一台主机通过网络互联的大世界。正是它的出现，因特网才从少数专家玩得起的东西变成了平常人也频繁使用的信息资源。www是一个分布式的超媒体系统，是超文本系统的扩充。</p>
+
+<h3 id='11'>1.1分布式和非分布式系统</h3>
+
+<p>分布式系统体现了系统的内聚性和透明性，各主机对自己的资源有高度的自治性，不考虑链接的一致性和有效性。意思就是说：主机A上的文档X包含了主机B上的文档Y里面的一个链接，那么主机B对该链接做出任何改动，主机A上的链接会失效或不一致。而非分布式系统则相反，其能保证所有链接都是有效和一致的。</p>
+
+<p>考虑主机之间的文档传递，可以有这样一种方式：请求与应答。客户端程序向服务器发送请求，服务器响应并传回文档。那么我们需要考虑下面几个问题：</p>
+
+<blockquote>
+<p>1】怎样标志资源？ 2】主机之间应该遵循怎样的协议进行通信？ 3】如何统一文档？</p>
+</blockquote>
+
+<p>上述问题的答案闲杂都已经揭晓了，就是URL，HTTP，HTML。这样就是为什么要有HTTP了。</p>
+
+<h2 id='tcp'>基于TCP的应用层协议</h2>
+
+<p>HTTP的实现基于TCP连接，发现自己TCP的好多内容已经生疏，于是从新回顾了下：</p>
+
+<h3 id='21tcp'>2.1再次理解TCP</h3>
+
+<p>TCP是TCP/IP协议的第四层传输层的内容。因特网中每个主机可以通过IP来确定，但是通信的真正端点却是主机中的进程。而标志端点却不能用进程号来标志，原因是：</p>
+
+<blockquote>
+<p>不同的计算机操作系统采用不同格式的进程标识符。 进程的创建和撤销都是动态的，通信的一方几乎无法识别对方的机器上的进程。</p>
+</blockquote>
+
+<p>为了统一的标志通信的端点，我们使用端口。端口是应用层的各种协议进程与运输实体进行层间交互的一种地址。不同系统具体实现端口的方法是可以不同的。而我们知道，HTTP的端口是80. (参考：<a href='http://baike.baidu.com.cn/view/1075.htm'>端口</a>)TCP连接通过可靠的传输协议找到目的端口，将报文面向字节流的方式传递。（TCP的可靠传输真是牛X，再理解一次也要花很的功夫）HTTP的报文封装到了TCP的报文中进行传输。</p>
+
+<h3 id='22httptcp'>2.2HTTP怎么通过TCP连接传输？</h3>
+
+<p>一次HTTP通信步骤：</p>
+
+<pre><code>1.建立TCP连接。
+2.客户端程序（浏览器）发送HTTP请求命令。
+3.Web浏览器发送请求头信息 
+4.Web服务器应答 
+5.Web服务器发送应答头信息
+6.Web服务器向浏览器发送数据 
+7.Web服务器关闭TCP连接 </code></pre>
+
+<p>（参考：<a href='http://stefan321.iteye.com/blog/1397514'>一次完整的HTTP通信步骤（7步）</a>）以此建立较直观的理解。</p>
+
+<h3 id='23socket'>2.3Socket连接</h3>
+
+<p>Socket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。 （参考：<a href='http://blog.csdn.net/xijiaohuangcao/article/details/6105623'>写给那些让我糊里糊涂的HTTP、TCP、UDP、Socket</a>）</p>
+
+<h2 id='http'>什么是HTTP协议</h2>
+
+<p>协议是指计算机通信网络中两台计算机之间进行通信所必须共同遵守的规定或规则，超文本传输协议(HTTP)是一种通信协议，它允许将超文本标记语言(HTML)文档从Web服务器传送到客户端的浏览器</p>
+
+<h3 id='31'>3.1报文结构</h3>
+
+<h4 id='id54'>请求报文</h4>
+
+<pre><code>方法(space)URL(space)版本(CRLF)
+首部行{
+	首部字段名:(space)值(CRLF)
+	...
+}
+(CRLF)
+实体主体</code></pre>
+
+<p>3、1、1方法：</p>
+
+<pre><code>对请求对象的进行的操作叫做方法。
+方法：      意义：
+OPTION      请求一些选项的信息
+GET         请求读取由URL所标识的信息
+HEAD 		请求读取由URL所标识的信息的头部
+POST 		给服务器添加信息
+PUT			在指明的URL下存储一个文档
+DELETE 		删除指明的URL所标识的资源
+TRACE		用来进行环回测试的请求报文
+CONNECT  	用于代理服务器</code></pre>
+
+<p>3、1、2URL: URL(Uniform Resource Locator) 地址用于描述一个网络上的资源, 基本格式如下</p>
+
+<pre><code>schema://host[:port#]/path/.../[?query-string][#anchor]
+
+scheme              指定低层使用的协议(例如：http, https, ftp)
+host                HTTP服务器的IP地址或者域名	
+port#               HTTP服务器的默认端口是80，这种情况下端口号可以省略。如果使用了别的端口，必须指明，例如 http://www.cnblogs.com:8080/
+path                访问资源的路径
+query-string       	发送给http服务器的数据
+anchor-             锚</code></pre>
+
+<p>URL 的一个例子</p>
+
+<pre><code>http://www.mywebsite.com/sj/test/test.aspx?name=sviergn&amp;x=true#stuff
+
+Schema:                 http
+host:                   www.mywebsite.com
+path:                   /sj/test/test.aspx
+Query String:           name=sviergn&amp;x=true
+Anchor:                 stuff</code></pre>
+
+<p>3、1、3首部字段：</p>
+
+<h4 id='id55'>响应报文</h4>
+
+<pre><code>版本(space)状态码(space)短语(CRLF)
+首部行{
+	首部字段名:(space)值(CRLF)
+	...
+}
+(CRLF)
+实体主体</code></pre>
+
+<p>3、2、1状态码 （参考<a href='http://baike.baidu.com/view/1790469.htm'>百科-状态码</a>）</p>
+
+<p>首部字段的参考 <a href='http://www.cnblogs.com/TankXiao/archive/2012/02/13/2342672.html'>1.HTTP协议详解</a> <a href='http://www.byvoid.com/blog/http-keep-alive-header'>2.BeyondTheVoid</a></p>
+
+<h3 id='32http'>3.2HTTP特点</h3>
+
+<p>1.支持客户/服务器模式。</p>
+
+<ol>
+<li>简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD, POST。每种方法规定了客户与服务器联系的类型不同。 由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</li>
+
+<li>灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。 4.无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</li>
+
+<li>无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</li>
+</ol>
+
+<h3 id='33'>3.3版本</h3>
+
+<p>超文本传输协议已经演化出了很多版本，它们中的大部分都是向下兼容的。在RFC2145中描述了HTTP版本号的用法。客户端在请求的开始告诉服务器它采用的协议版本号，而后者则在响应中采用相同或者更早的协议版本。 0.9 已过时。只接受GET一种请求方法，没有在通讯中指定版本号，且不支持请求头。由于该版本不支持POST方法，因此客户端无法向服务器传递太多信息。</p>
+
+<p>HTTP/1.0 这是第一个在通讯中指定版本号的HTTP协议版本，至今仍被广泛采用，特别是在代理服务器中。</p>
+
+<p>HTTP/1.1 当前版本。持久连接被默认采用，并能很好地配合代理服务器工作。还支持以管道方式在同时发送多个请求，以便降低线路负载，提高传输速度。</p>
+
+<p>HTTP/1.1相较于HTTP/1.0协议的区别主要体现在： 缓存处理 带宽优化及网络连接的使用 错误通知的管理 消息在网络中的发送 互联网地址的维护 安全性及完整性</p>
+
+<p>（参考<a href='https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE'>wiki</a>）</p>
+
+<p>RFC 1945定义了HTTP/1.0版本，RFC 2616定义了HTTP/1.1版本。 笔者在blog上提供了这两个RFC中文版的下载地址。 RFC1945下载地址： http://www.blogjava.net/Files/amigoxie/RFC1945（HTTP）中文版.rar RFC2616下载地址： http://www.blogjava.net/Files/amigoxie/RFC2616（HTTP）中文版.rar</p>
+
+<p>HTTP/1.0 每次请求都需要建立新的TCP连接，连接不能复用。HTTP/1.1 新的请求可以在上次请求建立的TCP连接之上发送，连接可以复用。优点是减少重复进行TCP三次握手的开销，提高效率。 注意：在同一个TCP连接中，新的请求需要等上次请求收到响应后，才能发送。 HTTP1.1在Request消息头里头多了一个Host域, HTTP1.0则没有这个域。</p>
+
+<p>(参考<a href='http://www.cnblogs.com/xiaopin/archive/2011/07/19/2110210.html'>Http协议详解版本二</a>)</p>
+
+<h2 id='id56'>细节</h2>
+
+<p><a href='http://www.byvoid.com/blog/http-keep-alive-header'>Keepalive</a> 【GET和POST的区别】(参考<a href='http://blog.csdn.net/gideal_wang/article/details/4316691'>HTTP POST GET 本质区别详解</a> , <a href='http://www.yining.org/2010/05/04/http-get-vs-post-and-thoughts/'>从HTTP GET和POST的区别说起</a>)</p>
+
+<h2 id='id57'>扩展的阅读资料：</h2>
+
+<p><a href='http://www.cnblogs.com/TankXiao/archive/2012/12/12/2794160.html'>代理</a> <a href='http://www.cnblogs.com/fish-li/archive/2011/07/03/2096903.html'>Cookie</a> <a href='http://www.cnblogs.com/chenzehe/archive/2010/08/30/1812995.html'>python的httplib的简单使用</a> <a href='http://www.cnblogs.com/TankXiao/archive/2012/02/06/2337728.html'>fiddle的使用</a></p>
+
+<p>果然到后面就没什么耐心继续写了！晕！！！！！！！</p></p>
+	</div>
+	</br>
+	<a href="/2013/04/20/learn-http.html">Read More</a>
+	</br>
+	</br>
+
+	<div class="post-meta">
+	    <p class="date"><i>26 Mar 2013</i></p>
+	</div>
+	<h1 class="post-title">
+		<a href="/2013/03/26/css-float.html">css float的详解</a>
+	</h1><div id = "post">
+	<p><h2 id='id49'>摘要</h2>
+
+<p>css有三种定位体系，<code>normal flow</code>，<code>float</code>，<code>absolute positioning</code>。普通流是普遍的布局定义，而float和绝对定位都是脱离了普通流。我在这片文章中说明我对float的理解：</p>
+
+<ul>
+<li>什么是float及怎么影响其他元素及其原理</li>
+
+<li>clear属性</li>
+
+<li>怎么清除float</li>
+</ul>
+
+<h2 id='let_it_float'>let it float</h2>
+
+<p>规范是这样描述float的：</p>
+
+<blockquote>
+<p>In the float model, a box is first laid out according to the normal flow, then taken out of the flow and shifted to the left or right as far as possible. Content may flow along the side of a float.</p>
+</blockquote>
+
+<p>也就是说，一开始float元素先按照normal flow那样布局，然后再从normal flow中抽出来，尽可能往最左或最右布局。然后文档内容围绕着它，而不能覆盖(除非设置了margin)。然后根据这个描述：</p>
+
+<blockquote>
+<p>Since a float is not in the flow, non-positioned block boxes created before and after the float box flow vertically as if the float did not exist. However, the current and subsequent line boxes created next to the float are shortened as necessary to make room for the margin box of the float.</p>
+</blockquote>
+
+<p>可以这样解释float的原理：首先，按照normal flow布局，但生成了一个块级框，也就是说生成了一个bfc！所以它与外界失去了联系，不会发生外边距碰撞重叠等等。这种块级框对行框造成了shorten作用，所以normal flow中这几行的行框就被缩短了，于是造成了文档的环绕排布。然后再从normal flow上去掉漂浮框。其上即可放置其他normal flow的东西了。在同一个bfc中是不能覆盖float的！ 具体的float的布局原则可以参考<a href='http://www.w3.org/TR/CSS2/visuren.html#floats'>w3c规范</a>或者<a href='http://w3help.org/zh-cn/kb/011/'>w3chelp</a>。</p>
+
+<h2 id='clear'>clear</h2>
+
+<p>规范的描述是：</p>
+
+<blockquote>
+<p>This property indicates which sides of an element&#8217;s box(es) may not be adjacent to an earlier floating box.</p>
+</blockquote>
+
+<p>原理： 在css2.1之前是通过增加元素的margin-top来清除掉浮动，现在是通过增加<code>clearance</code>来清除的。规范中说的很清晰：要比较这两个值来计算clearance的大小！</p>
+
+<pre><code>c1 = h - m2
+c2 = max(m1,m2)-m1-m2 = max(-m1,-m2)</code></pre>
+
+<p>c = max(c1,c2)</p>
+
+<p>可以看看这个例子：</p>
+<div class='highlight'><pre><code class='css'><span class='nt'>div</span><span class='nf'>#a</span><span class='p'>{</span>
+	<span class='k'>height</span><span class='o'>:</span> <span class='m'>100px</span><span class='p'>;</span>
+	<span class='k'>width</span><span class='o'>:</span> <span class='m'>200px</span><span class='p'>;</span>
+	<span class='k'>background</span><span class='o'>:</span> <span class='nb'>red</span><span class='p'>;</span>
+	<span class='k'>margin-bottom</span><span class='o'>:</span> <span class='m'>60px</span><span class='p'>;</span>
+<span class='p'>}</span>
+<span class='nt'>div</span><span class='nf'>#b</span><span class='p'>{</span>
+	<span class='k'>height</span><span class='o'>:</span> <span class='m'>100px</span><span class='p'>;</span>
+	<span class='k'>width</span><span class='o'>:</span> <span class='m'>50px</span><span class='p'>;</span>
+	<span class='k'>margin</span><span class='o'>:</span><span class='m'>0</span><span class='p'>;</span>
+	<span class='k'>float</span><span class='o'>:</span> <span class='k'>left</span><span class='p'>;</span>
+	<span class='k'>background</span><span class='o'>:</span> <span class='nb'>blue</span><span class='p'>;</span>
+<span class='p'>}</span>
+<span class='nt'>div</span><span class='nf'>#c</span><span class='p'>{</span>
+	<span class='k'>clear</span><span class='o'>:</span> <span class='k'>left</span><span class='p'>;</span>
+	<span class='k'>height</span><span class='o'>:</span> <span class='m'>100px</span><span class='p'>;</span>
+	<span class='k'>width</span><span class='o'>:</span> <span class='m'>200px</span><span class='p'>;</span>
+	<span class='k'>background</span><span class='o'>:</span> <span class='nb'>yellow</span><span class='p'>;</span>
+	<span class='k'>margin-top</span><span class='o'>:</span> <span class='m'>150px</span><span class='p'>;</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>现在的c1 = h - m2 = 100 - 150 = -50; c2 = max(-m1,-m2) = -60 所以c = -50 可以自己调节h，m1，m2的大小来查看效果。</p>
+
+<h2 id='id50'>清除浮动（闭合浮动）</h2>
+
+<p>参考这位<a href='http://kayosite.com/remove-floating-style-in-detail.html'>gduter</a>的文章，的确讲得很好。收获很大！ 为什么在尾部添加空div即可闭合浮动呢？根据上面讲的，父级的div会被填充clearance，造成了闭合起来的“假象”，其实没有生成bfc是不可能真正地闭合浮动的，但是这种方法比较经典。 由于ie的各种bug，也导致了其他的方法。</p>
+
+<h2 id='id51'>负外边距</h2>
+
+<p>规范中讲到float是不能超过父元素的，但用了负外边距，会造成重叠。到底为什么不会造成环绕，我也不是很懂。</p>
+
+<h2 id='id52'>浮动！浮动！</h2>
+
+<p>巧用好浮动的确能为我们布局管理省了很多功夫！看到一个很好玩的东西： <a href='http://litten.github.com/blog/blog/2012/12/14/css-jiugongge/'>九宫格</a></p></p>
+	</div>
+	</br>
+	<a href="/2013/03/26/css-float.html">Read More</a>
+	</br>
+	</br>
+
+	<div class="post-meta">
+	    <p class="date"><i>25 Mar 2013</i></p>
+	</div>
+	<h1 class="post-title">
+		<a href="/2013/03/25/css-note.html">css2.1文档和《css权威指南》笔记</a>
+	</h1><div id = "post">
+	<p><h2 id='id45'>摘要</h2>
+
+<p><code>html</code>,<code>css</code>,<code>javascript</code>这三个web前端开发的基础技术可以说构成所谓的<code>MVC</code>架构。model是html，view是指css，control就是js。现在自己属于web开发的beginer，不应该觉得前端开发入门快，于是就急于速成，“css就那么点东西”虽然不错，但若要应用好和理解清楚却也是不容易。在weibo上看到很多人喊：“不要有前端后台的分工”，自己这方面理解也不是很深，也希望多多学习能有所理解。这几天都在忙于找实习，发现自己的技术过于菜鸟，应聘大公司的实习岗位真的比不上人家。这也是现在比较苦恼的。现如今也是无路可退了，那就一路走到底了。</p>
+
+<h2 id='the_css_21_processing_model'>The CSS 2.1 processing model</h2>
+
+<p>文档中定义了一般的css的处理模型，但是每种浏览器核心的处理方式不同，于是造成了各种的不兼容问题。参看下<a href='http://www.w3.org/TR/CSS2/intro.html'>The CSS 2.1 processing model</a>,我的理解就是：根据css源文件建立文档树，方法就是根据选择器的正则表达式匹配到文档树上，（文档树可能已经是html的dom树，比如webkit就是将css挂在dom tree上生成render tree），根据规则确定其层叠和继承。然后根据树渲染画布（忽略了media这个东西，因为我还不是很理解）文档还定义了css的定位模型。<a href='http://www.w3.org/TR/CSS2/intro.html'>CSS 2.1 addressing model</a>,说明各种选择器的定位。根据上述的理解，css的原理是很简单的。参看一下<a href='http://www.cnblogs.com/cnwebdeveloper/articles/2234423.html'>浏览器的工作原理</a>。</p>
+
+<h2 id='visual_formatting_model'>Visual formatting model</h2>
+
+<p>看英文文档还真是略难啊！但主要是能把各种术语和原理理解好。 视觉格式化模型，这个模型主要是规定了浏览器对视觉媒体如何处理文档树。根据<a href='http://www.w3.org/TR/CSS2/box.html'>box model</a>,文档树的每个元素都会生成0或更多的框，框的布局根据下面的原则：</p>
+
+<blockquote>
+<p>box dimensions and type. positioning scheme (normal flow, float, and absolute positioning). relationships between elements in the document tree. external information (e.g., viewport size, intrinsic dimensions of images, etc.).</p>
+</blockquote>
+
+<h3 id='id46'>包含块</h3>
+
+<p>每个包含块都是相对于其包含块摆放的。 这篇文章写得不错：<a href='http://www.smallni.com/containing-block/'>详解包含块</a></p>
+
+<h3 id='box'>一切都是box</h3>
+
+<p><code>block-level element</code>块级元素，normal flow中占领整行，类似p,h1,div。可以设置<code>display:block|list-item|table</code>来生成块级元素。</p>
+
+<p><code>block-level boxes</code>块级框，块级元素会生成一个块级框。参与到bfc中。“block-level box一定会产生block formatting context”是错误的，block-level box须通过设置如overflow不为visible(IE6/7无效，可以设zoom)、float不为none等等来创建block formatting context。</p>
+
+<p><code>block container box</code>容器框，不是只包含块级框，就是只建立inline formatting context.可以理解是一个大盒子，里面能放小盒子。于是就出现了<code>Anonymous block boxes</code>，因为块容器框出现了<code>block-level boxes</code>，就会迫使它只能包含块级框了。注意：non-replaced inline blocks and non-replaced table cells are block containers。</p>
+
+<p>相应的，就有<code>行内元素</code>和<code>行框</code>的概念。在下面介绍！</p>
+
+<p>参考：<a href='http://www.zhihu.com/question/20086234'>知乎问答</a></p>
+
+<h3 id='id47'>水平格式化</h3>
+
+<p>参看<a href='http://www.w3.org/TR/CSS2/visudet.html#Computing_widths_and_margins'>文档</a> 这部分要理解的是：</p>
+
+<pre><code>inline, non-replaced elements
+inline, replaced elements
+block-level, non-replaced elements in normal flow
+block-level, replaced elements in normal flow
+floating, non-replaced elements
+floating, replaced elements
+absolutely positioned, non-replaced elements
+absolutely positioned, replaced elements
+&#39;inline-block&#39;, non-replaced elements in normal flow
+&#39;inline-block&#39;, replaced elements in normal flow</code></pre>
+
+<h2 id='id48'>戞然尔止</h2>
+
+<p>我这样写blog的确不好，没有一个明确的命题，只是想用这个方式督促自己认真耐心的看文档，但是对于blog来说却不好了，所以这里先停止，我以后再一个topic一个topic的补充。</p></p>
+	</div>
+	</br>
+	<a href="/2013/03/25/css-note.html">Read More</a>
+	</br>
+	</br>
+
+	<div class="post-meta">
 	    <p class="date"><i>09 Mar 2013</i></p>
 	</div>
 	<h1 class="post-title">
 		<a href="/2013/03/09/php-note_1.html">php笔记——作用域，函数，单、双引号</a>
 	</h1><div id = "post">
-	<p><h2 id='id563'>摘要</h2>
+	<p><h2 id='id40'>摘要</h2>
 
 <p>我不是还在学python吗？python很好用，一种很好的语言，创造者直接去了google，神人就是牛b哄哄啊！本来想继续看下去，但是接下来要做高级程序设计，负责的是后台开发，所以要快速学习PHP+MySQL。其实我还是对前端念念不忘的，但既然决定要学后台开发，那么就要全心全意，发现兴趣点，继续深究。</p>
-<img height='550px' src='/assets/image/2013-3-9-logo.png' width='570px' />
-<h2 id='id564'>道听途说</h2>
+<img height='550px' width='570px' src='/assets/image/2013-3-9-logo.png' />
+<h2 id='id41'>道听途说</h2>
 
 <p>下面是我从知乎上摘下来某网友说的：</p>
 
@@ -45,7 +370,7 @@
 
 <p>我的想法是：美派一点的说法就是“一切语言都是工具”。PHP这门语言到底有没有“营养”，哪门语言才叫有“营养”，对于我来说，他们都是工具，按照王垠的说法就是“不要对工具产生感情”。我还没对一门语言研究得极深的时候，我不能领悟这段话的含义。但上面的建议觉得可以去试试。</p>
 <hr />
-<h2 id='id565'>作用域</h2>
+<h2 id='id42'>作用域</h2>
 
 <p>圣经上的描述：</p>
 
@@ -120,7 +445,7 @@
 
 <p>上述代码转载：http://www.cndong.cn/php-global-variable-xiangjie.html<br /> Learn More About It Using <a href='http://php.net/manual/zh/language.variables.scope.php'>PHP.Net</a></p>
 
-<h2 id='id566'>函数返回值</h2>
+<h2 id='id43'>函数返回值</h2>
 
 <p>php函数可以返回多种类型的值。</p>
 <div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
@@ -139,7 +464,7 @@
 	<span class='k'>echo</span> <span class='nx'>fn</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>);</span>
 <span class='cp'>?&gt;</span><span class='x' />
 </code></pre></div>
-<h2 id='id567'>单双引号的区别</h2>
+<h2 id='id44'>单双引号的区别</h2>
 
 <p>这边文章写的很好！<a href='http://www.jb51.net/article/21035.htm'>Link</a></p>
 
@@ -158,11 +483,11 @@
 	<h1 class="post-title">
 		<a href="/2013/03/02/if-you-have-two-router.html">如果你有两个路由器</a>
 	</h1><div id = "post">
-	<p><h2 id='id559'>摘要</h2>
+	<p><h2 id='id36'>摘要</h2>
 
 <p>寒假在家，qihui来我家，说能否在一楼也能用wifi。OK啊～我就去买了一个新的路由器和30m的网线来搞咯。（在家能买的一个TP-Link 150M要120！网线1m 1.5元）于是我就从三楼的路由拉了一根长长的线到一楼，接到那个新买的路由。也是第一次搞，跟老弟吹了个牛，于是硬着头皮搞，因为一开始想用WDS的方式来链接，成功后发现网速特别不稳定，于是就换成有线连接了！下面介绍几种方式。</p>
-<img height='520px' src='/assets/image/2013-3-2-logo.jpg' width='500px' />
-<h2 id='id560'>有线连接</h2>
+<img height='520px' width='500px' src='/assets/image/2013-3-2-logo.jpg' />
+<h2 id='id37'>有线连接</h2>
 
 <p>路由器A为主路由，路由器B为从路由。 A直接进入<code>192.168.1.1</code>进行设置，（忽略windows那些坑爹的设置）令其进行PPPoE拨号连接，确保能正常上网。B进入<code>192.168.1.1</code>进行设置，将LAN口设置为<code>192.168.2.1</code>,使其二者不在同一网段。</p>
 
@@ -174,7 +499,7 @@
 
 <p>在向导里这样设置：IP：<code>192.168.1.2</code>,掩码：<code>255.255.255.0</code>网关：<code>192.168.1.1</code>即可～</p>
 
-<h2 id='id561'>路由器当交换机</h2>
+<h2 id='id38'>路由器当交换机</h2>
 
 <p>B和A在同一网段，关闭B的DHCP，A的LAN口和B的LAN相连。</p>
 
@@ -182,7 +507,7 @@
 
 <p>阅读这篇blog！<a href='http://www.yesure.net/archives/5453.html'>WDS的设置</a></p>
 
-<h2 id='id562'>不爽</h2>
+<h2 id='id39'>不爽</h2>
 
 <p>这也是上个月的事了，昨天有人叫我帮忙解决<code>window下受限制或无连接</code>的问题，我最后下的结论是<code>IP不够分配了</code>。因为他接的是图书馆的wifi，我觉的是这个问题。但是我还是没有很确定！课堂上学得<code>计算机网络</code>的知识还给老师了！接下来要多多复习这门课程！当然主要还是学习<code>Python</code>和<code>JS</code>,深入&#8217;Java&#8217;,有时间要学学后台！唉！菜啊！</p></p>
 	</div>
@@ -197,11 +522,11 @@
 	<h1 class="post-title">
 		<a href="/2013/02/28/redo-github-pages.html">重建Github Pages，简单一点点</a>
 	</h1><div id = "post">
-	<p><h2 id='id555'>摘要</h2>
+	<p><h2 id='id32'>摘要</h2>
 
 <p>对自己以前设计的<code>v字仇杀队</code>风格的博客已经审美疲劳，疲劳了那口味略重的颜色和粗大的设计，疲劳了美感不足的总体设计，疲劳了文章展示，疲劳了缺乏统一格式的文章。我决定要换掉这个主题。龙哥推荐了一个<a href='http://jimeh.me/blog/'>blog</a>给我,我觉得很有感觉，风格很简洁令人印象深刻。于是我想模仿这个页面做一个简单风格的博客。过程中参考了此博主的代码，自己定义简单的布局，简单的功能。css3，自定义字体，404 pages等都是我新的收获，对css有了新的理解。</p>
-<img height='500px' src='/assets/image/2013-2-28-logo.jpg' width='500px' /><hr />
-<h2 id='id556'>对文章的格式定义</h2>
+<img height='500px' width='500px' src='/assets/image/2013-2-28-logo.jpg' /><hr />
+<h2 id='id33'>对文章的格式定义</h2>
 
 <p>由于首页设定了文章的div的id选择器：</p>
 <div class='highlight'><pre><code class='css'><span class='nf'>#post</span><span class='p'>{</span>
@@ -212,11 +537,11 @@
 </code></pre></div>
 <p>所以文章的首部为一段摘要和一副图片。 每个新话题设定一个标题，为h2。 结尾有一段总结及附上一段好的文字，最后有一个<code>&lt;/br&gt;</code>,<code>&lt;hr /&gt;</code></p>
 <hr />
-<h2 id='id557'>自定义字体</h2>
+<h2 id='id34'>自定义字体</h2>
 
 <p>用到的是css3的<code>@font-face</code>，英文和中文分开使用。<a href='http://www.fontsquirrel.com'>fontsquirrel</a>是一个免费的字体网站，里面的英文字体的确不错，当然<a href='http://www.google.com/webfonts'>Google Web Fonts</a>字体也是不错的，它的使用方法google一下。 需要注意的是，不同的浏览器的支持需要不同的字体格式，字体的格式可以用字体格式转换器转换这个<a href='http://www.fontsquirrel.com/tools/webfont-generator'>webfont-generator</a>可以用，但是不支持太大的字体格式。 <a href='http://www.w3school.com.cn/css3/css3_fonts.asp'>@font-face</a>语法在w3school自学。</p>
 <hr />
-<h2 id='id558'>效率！效率！</h2>
+<h2 id='id35'>效率！效率！</h2>
 
 <p>这次的重建我还是花费了很多的时间，这么简单的页面其实不应该花费我的那么的时间！只不过找字体和各种调整花费了一些时间有点让我无语！一开始以为github的jekyll引擎不支持.ttf格式的字体，后来才发现原来是我自己的字体格式是.TTF！晕，在windows下浑然不知！在Ubuntu下是一致的！这里各种各样的问题还是逃不开自己效率太低的问题！接下来要寻求一些提高效率的方法。</p>
 
@@ -241,7 +566,7 @@
 
 <p>今天主要读了第一章<code>基础知识</code>。</p>
 
-<h3 id='id550'>交互式解释器</h3>
+<h3 id='id27'>交互式解释器</h3>
 
 <p>python是一种<code>解释性</code>的语言,当然要用<code>解释器</code>来翻译.下面是一段来自维基对于解释器和<code>编译器</code>的解释.</p>
 
@@ -249,15 +574,15 @@
 <p>解释器（英语：Interpreter），又译为直译器，是一种电脑程序，能够把高级编程语言一行一行直接转译运行。解释器不会一次把整个程序转译出来，只像一位“中间人”，每次运行程序时都要先转成另一种语言再作运行，因此解释器的程序运行速度比较缓慢。它每转译一行程序叙述就立刻运行，然后再转译下一行，再运行，如此不停地进行下去。 解释器的好处是它消除了编译整个程序的负担，但也会让运行时的效率打了折扣。相对地，编译器并不运行程序或原代码，而是一次将其翻译成另一种语言，如机器码，以供多次运行而无需再经编译。其制成品无需依赖编译器而运行，程序运行速度比较快。</p>
 </blockquote>
 <hr />
-<h3 id='id551'>模块</h3>
+<h3 id='id28'>模块</h3>
 
 <p>这个我觉得类似于java的包.实现了python的扩展性..py文件的我觉得可以称作以个模块。</p>
 <hr />
-<h3 id='id552'><code>_future_</code></h3>
+<h3 id='id29'><code>_future_</code></h3>
 
 <p>这就是程序员的浪漫！python之父的卖萌时光机！</p>
 <hr />
-<h3 id='id553'>版本</h3>
+<h3 id='id30'>版本</h3>
 
 <p>python是不断更新的语言，所以要多多注意版本。比如在书中</p>
 
@@ -273,7 +598,7 @@
 
 <p>退出则是按键q！ 我觉得pc里要安装几个版本的python解释器，不然后面会不够用的！！ <a href='http://www.python.org/download/releases/'>在这里下载</a></p>
 <hr />
-<h3 id='id554'>新建模板和运行</h3>
+<h3 id='id31'>新建模板和运行</h3>
 
 <p>用编辑器比如vim，emacs，notepad++即可编辑，然后在IDEL里打开！也可在命令行打开运行，在环境变量里设置好就行！</p>
 <hr />
@@ -317,7 +642,7 @@
 
 <p>使用方法参考：<a href='http://fhqdddddd.blog.163.com/blog/static/186991542011427104124407/'>方法</a></p>
 
-<h2 id='id549'>感受</h2>
+<h2 id='id26'>感受</h2>
 
 <p>我还是改不了拖延的毛病，很久以前就被拜托做这个小软件，但是没有很好的明确他的要求，所以没有很好的做出来。过年也多大心情和时间做这个东西。等到匆匆做出来后又有一大堆的bug！对方并没有满足！哎！做事拖延真是害人害己！ 略微失败的经历！</p>
 
@@ -389,7 +714,7 @@
 
 <p>Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。github用的就是git，所以我们上传代码和使用github都是要用的git的，git的使用很简单！ Google一下一大堆的资料，其中的SSH的密钥对，就是用自己的邮箱来生成一个公钥，用自己的密码作为私钥进行身份认证。对同一个库提供多人验证。</p>
 
-<h2 id='id547'>站点结构</h2>
+<h2 id='id24'>站点结构</h2>
 
 <p>做完了这些配置之后，就开始建立一个库，然后建立一个文件结构，典型的目录结构就是：</p>
 
@@ -408,7 +733,7 @@ index.html</code></pre>
 
 <p>成功后，就自动产生了。不要自己去建立。</p>
 
-<h2 id='id548'>设计</h2>
+<h2 id='id25'>设计</h2>
 
 <p>自己按照自己的口味做自己喜欢的blog!要学的主要是html和css的基础! github的好处就是可以去参考别人的代码!现在也很多用github建站.所以可参考的代码是一大堆的。对于<code>liquid</code>语法，参考别人的代码也可以收获相当多。我的blog的主题是v字仇杀队，做得感觉还好！但没有一般blog清新的感觉，如果用来提供阅读的环境，并不是很好!先保留着，这几天做得也比较累了！</p>
 
@@ -437,344 +762,6 @@ index.html</code></pre>
 	</br>
 	</br>
 
-	<div class="post-meta">
-	    <p class="date"><i>26 Nov 2012</i></p>
-	</div>
-	<h1 class="post-title">
-		<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8%E5%AD%A6/2012/11/26/BLPandBIBA.html">计算机安全学：BLP模型和BIBA模型</a>
-	</h1><div id = "post">
-	<p><h1 id='id536'>今日签到</h1>
-
-<p>复习今天计算机安全学的课，昨天准备今天的ppt花费了很多时间，但也能大致理解BLP模型和BIBA模型，辛苦队友们了。大家一起学习时焕发的激情让我想到如果我们成立的小组如果能每天都组织去学习，共同探讨一些东西，是提高学习效率的好方法，不再是一个人闭门造车。那些闭门造车的只要弄懂了某些知识就好像得到什么宝一样不和别人分享。这是非常不利的。当然很多牛人对于知识的分享都是比较懒惰的，只能说他们懒惰了！</p>
-
-<p>今天的主要知识点是：</p>
-
-<pre><code>BLP模型；
-BIBA模型；</code></pre>
-<hr />
-<h1 id='blp'>BLP模型</h1>
-
-<pre><code>BLP是描述访问控制的机密性问题的状态机模型，访问许可通过访问控制矩阵和安全级别来定义，
-安全策略防止信息从高安全级别流向低安全级别，这些策略一般的被称为多级安全（MLS）策略</code></pre>
-
-<p>上面这段话是对BLP模型一个很好的描述。</p>
-
-<p>关键词： + 状态机模型 + 机密性 + 访问控制矩阵 + 安全级别 + 安全策略 + 安全模型 + 信息流向</p>
-
-<h2 id='id537'>安全策略</h2>
-
-<pre><code>安全策略为一个安全系统或一组安全系统定义安全；安全策略考虑机密性，完整性，可用性；
-面对特定的安全需求得出的安全策略，在安全系统中定义什么才叫安全，这就是所谓的安全策略。</code></pre>
-
-<h2 id='id538'>安全模型</h2>
-
-<pre><code>表示一个特定策略或一组策略的模型。</code></pre>
-
-<p>安全模型通常是形式化的描述安全策略。为此需要对系统进行建模，有三种主要的模型。 1. 状态机模型 2. 信息流模型 3. 不干扰模型</p>
-
-<h2 id='id539'>状态机模型</h2>
-
-<pre><code>状态机模型是状态以及发生在离散时间点上状态的变化</code></pre>
-
-<p>其实就是状态和状态转移。</p>
-
-<h3 id='id540'>一般状态机模型</h3>
-
-<h4 id='id541'>定义状态集：</h4>
-
-<pre><code>A set of states, Q
-An input alphabet Σ
-inital state q0 ∈ Q
-accepting states A ⊂ Q
-transition function δ : Q × Σ → Q
-    equivalent to the edges </code></pre>
-
-<p><img src='http://m3.img.libdd.com/farm4/2012/1126/23/078444D44E18596F3E8759E339CA9B1007697180F6503_171_214.JPEG' alt='state_Machine1' /></p>
-
-<h4 id='id542'>状态机模型描述：</h4>
-
-<pre><code>A state can be good or bad
-      secure or insecure
-Transitions from good to bad states are dangerous.
-Two criteria
-      Start state be secure
-      No transition from secure 
- to insecure</code></pre>
-
-<p><img src='http://m2.img.libdd.com/farm5/2012/1126/23/8A8A2B6DAE39EE46F9E9A95BECB067B8E31448725EE3E_167_223.JPEG' alt='state_Machine2' /></p>
-
-<h4 id='id543'>状态机原则：</h4>
-
-<pre><code>Describe all secure states
-Describe transitions from secure states
-Prove that no transition leads from secure to insecure</code></pre>
-
-<p>If this is possible, the system is provably secure. Bell-LaPadula is one description of secure states.</p>
-
-<p>符合这种原则的就是安全的状态机；</p>
-
-<h3 id='blp'>具体到BLP模型</h3>
-
-<h4 id='id544'>定义状态集</h4>
-
-<pre><code>a set of subjects S
-a set of objects O
-set of access operations A = {execute, read, append, write}
-A set of security levels L, with a partial ordering（偏序） ≤
-
-A state : (b, M, f), includes
-Access operations currently in use b
-List of tuples (s, o, a), s ∈ S, o ∈ O, a ∈ A.
-e.g (Alice, Bob, read);
-
-Access permission matrix
-M = (Ms,o)s∈S,o∈O, where Ms,o ⊂ A
-
-Clearance and classification f = (fS, fC, fO) (安全级别分配的集合）
-fS : S → L maximal security level of a subject
-fC : S → L current security level of a subject (fC ≤ fS)
-fO : O → L classiﬁcation of an object</code></pre>
-
-<h4 id='id545'>安全策略</h4>
-
-<p>BLP的安全策略在于：</p>
-
-<pre><code>强制安全策略
-包括Simple Security Property (SS-property)和*-property  系统对所有的主体和客体都分配有上一个访问类属性
-它包括主体和客体的密级和范畴，系统通过比较主体和客体的访问类属性来控制主体对客体的访问
-
-自主安全策略
-使用一个访问矩阵来表示，主体只能按照在访问矩阵中被授予的对客体的访问权限对客体进行相应的访问</code></pre>
-
-<h5 id='ssproperty'>SS-Property</h5>
-
-<pre><code>A state (b, M, f) satisfies the SS-property if
-  ∀(s, o, a) ∈ b, such that a ∈ {read, write}
-fO(o) ≤ fS(s)</code></pre>
-
-<p>在理解这个特性之前，我觉得应该直接的说下信息的不可<em>“下流”</em>性比较好。在军用的安全系统中，人有这样的等级：将军，指挥官，士兵。秘密分为：绝密，秘密，公开。将军可以知道三个等级的秘密，指挥官可以知道处绝密以外的秘密，士兵只能知道公开的。也就是说士兵是不能读秘密和绝密的，指挥官也不能知道绝密，意思就是说信息是向上流动的。同样的将军不能写公开的秘密，这句话的意思可以理解为：“将军不能跟士兵谈论，因为自己知道的绝密会被传递出去” 理解了上面的例子，那么这个简单安全特性其实就是在讲：信息“无上读”，即：士兵不能读秘密和绝密。fO(o) ≤ fS(s)的意思就是客体的范畴和安全级别在主体之下或相等。注意write指的是读并且写。这里指的是同级同类别之间的，同个安全级别和同个类别之间能相互地读写。</p>
-
-<p>问题是：某个高级别的主体可以读高级别的信息并写入低级别的客体中，那么信息还是下流了。解决这个问题在于：</p>
-
-<h5 id='property'>星-Property</h5>
-
-<pre><code>A state (b,M, f) satisﬁes the 星-property if  ∀(s, o, a) ∈ b, such that a ∈ {append, write}
-        fC(s) ≤ fO(o)</code></pre>
-
-<p>and</p>
-
-<pre><code>if ∃(s, o, a) ∈ b where a ∈ {append, write}, then ∀o’, a’∈ {read, write}, such that (s, o’, a’) ∈ b   fO(o’) ≤ fO(o)</code></pre>
-
-<p>这里就是在说明：“无下写”的控制策略。依照上面的例子就是：将军不能和士兵谈论。</p>
-
-<h5 id='dsproperty'>ds-Property</h5>
-
-<p>自主安全特性：这个特性的必要性很低，因为他就是用访问矩阵的概念来描述上面两个特性。</p>
-
-<p>所以总结BLP模型就是：“下读上写”</p>
-
-<h1 id='biba'>BIBA模型</h1>
-
-<p>BIBA模型主要描述的是完整性，BLP模型描述或者说注重的是信息的私密性。信息的完整性就是说：信息的来源是安全的。保证信息的完整性就是BIBA模型的中心。</p>
-
-<h3 id='id546'>安全策略</h3>
-
-<p>BIBA模型主要应用于商业，如银行。举个具体的例子，在学校，任课老师，班长，学生读应安全安级别。老师说：“大家期末都不挂课”。学生会相信。但是如果班长说：“大家期末都不挂课”，大家就不一定相信了。老师亲自给的答案，大家会相信，如果经过班长的手，就会产生疑惑。所以我们为了保证信息的完整性，就规定：信息要“下流”，信息只能是“上读下写”。这样才能保证信息的来源可靠；</p>
-
-<pre><code>ss-Property 相对于BLP 的是：fO(o) &gt;= fS(s)
-星-Property 对于BLP 的是：fC(s) &gt;= fO(o)</code></pre>
-
-<p>在这个模型中，如果信息上流，那么要使获得来自低级别的信息的高级别的主体降低身份到低级别。所以我们可以说：整个模型只会更“下流”，无法“上流”；</p>
-
-<p>所以总结BIBA模型就是：“上读下写”</p>
-
-<h1 id='learn_something_interesting__sleepsort'>Learn Something Interesting &#8211; SleepSort</h1>
-
-<p>今天某美女分享了一个话题：SleepSort。</p>
-
-<p>见代码：</p>
-<div class='highlight'><pre><code class='bash'><span class='c'>#!/bin/bash</span>
-<span class='k'>function </span>f<span class='o'>()</span> <span class='o'>{</span>
-    sleep <span class='s2'>&quot;$1&quot;</span>
-    <span class='nb'>echo</span> <span class='s2'>&quot;$1&quot;</span>
-<span class='o'>}</span>
-<span class='k'>while</span> <span class='o'>[</span> -n <span class='s2'>&quot;$1&quot;</span> <span class='o'>]</span>
-<span class='k'>do</span>
-<span class='k'>    </span>f <span class='s2'>&quot;$1&quot;</span> &amp;
-    <span class='nb'>shift</span>
-<span class='k'>done</span>
-<span class='nb'>wait</span>
-</code></pre></div>
-<p>这个东西真是用来娱乐身心的好东西。</p>
-
-<p>还有是分形图：！<a title='分形图' href='http://m1.img.libdd.com/farm4/2012/1126/23/6F85DEFB1EBAD85D496BCCAD3AAC9EF07FD086AE95681_800_533.jpg'>分形图</a> 神代码：</p>
-<div class='highlight'><pre><code class='python'><span class='n'>_</span>                                      <span class='o'>=</span>   <span class='p'>(</span>
-                                        <span class='mi'>255</span><span class='p'>,</span>
-                                      <span class='k'>lambda</span>
-                               <span class='n'>V</span>       <span class='p'>,</span><span class='n'>B</span><span class='p'>,</span><span class='n'>c</span>
-                             <span class='p'>:</span><span class='n'>c</span>   <span class='ow'>and</span> <span class='n'>Y</span><span class='p'>(</span><span class='n'>V</span><span class='o'>*</span><span class='n'>V</span><span class='o'>+</span><span class='n'>B</span><span class='p'>,</span><span class='n'>B</span><span class='p'>,</span>  <span class='n'>c</span>
-                               <span class='o'>-</span><span class='mi'>1</span><span class='p'>)</span><span class='k'>if</span><span class='p'>(</span><span class='nb'>abs</span><span class='p'>(</span><span class='n'>V</span><span class='p'>)</span><span class='o'>&lt;</span><span class='mi'>6</span><span class='p'>)</span><span class='k'>else</span>
-               <span class='p'>(</span>              <span class='mi'>2</span><span class='o'>+</span><span class='n'>c</span><span class='o'>-</span><span class='mi'>4</span><span class='o'>*</span><span class='nb'>abs</span><span class='p'>(</span><span class='n'>V</span><span class='p'>)</span><span class='o'>**-</span><span class='mf'>0.4</span><span class='p'>)</span><span class='o'>/</span><span class='n'>i</span>
-                 <span class='p'>)</span>  <span class='p'>;</span><span class='n'>v</span><span class='p'>,</span>      <span class='n'>x</span><span class='o'>=</span><span class='mi'>1500</span><span class='p'>,</span><span class='mi'>1000</span><span class='p'>;</span><span class='n'>C</span><span class='o'>=</span><span class='nb'>range</span><span class='p'>(</span><span class='n'>v</span><span class='o'>*</span><span class='n'>x</span>
-                  <span class='p'>);</span><span class='kn'>import</span>  <span class='nn'>struct</span><span class='p'>;</span><span class='n'>P</span><span class='o'>=</span><span class='n'>struct</span><span class='o'>.</span><span class='n'>pack</span><span class='p'>;</span><span class='n'>M</span><span class='p'>,</span>\
-            <span class='n'>j</span>  <span class='o'>=</span><span class='s'>&#39;&lt;QIIHHHH&#39;</span><span class='p'>,</span><span class='nb'>open</span><span class='p'>(</span><span class='s'>&#39;M.bmp&#39;</span><span class='p'>,</span><span class='s'>&#39;wb&#39;</span><span class='p'>)</span><span class='o'>.</span><span class='n'>write</span>
-<span class='k'>for</span> <span class='n'>X</span> <span class='ow'>in</span> <span class='n'>j</span><span class='p'>(</span><span class='s'>&#39;BM&#39;</span><span class='o'>+</span><span class='n'>P</span><span class='p'>(</span><span class='n'>M</span><span class='p'>,</span><span class='n'>v</span><span class='o'>*</span><span class='n'>x</span><span class='o'>*</span><span class='mi'>3</span><span class='o'>+</span><span class='mi'>26</span><span class='p'>,</span><span class='mi'>26</span><span class='p'>,</span><span class='mi'>12</span><span class='p'>,</span><span class='n'>v</span><span class='p'>,</span><span class='n'>x</span><span class='p'>,</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>24</span><span class='p'>))</span><span class='ow'>or</span> <span class='n'>C</span><span class='p'>:</span>
-            <span class='n'>i</span>  <span class='p'>,</span><span class='n'>Y</span><span class='o'>=</span><span class='n'>_</span><span class='p'>;</span><span class='n'>j</span><span class='p'>(</span><span class='n'>P</span><span class='p'>(</span><span class='s'>&#39;BBB&#39;</span><span class='p'>,</span><span class='o'>*</span><span class='p'>(</span><span class='k'>lambda</span> <span class='n'>T</span><span class='p'>:(</span><span class='n'>T</span><span class='o'>*</span><span class='mi'>80</span><span class='o'>+</span><span class='n'>T</span><span class='o'>**</span><span class='mi'>9</span>
-                  <span class='o'>*</span><span class='n'>i</span><span class='o'>-</span><span class='mi'>950</span><span class='o'>*</span><span class='n'>T</span>  <span class='o'>**</span><span class='mi'>99</span><span class='p'>,</span><span class='n'>T</span><span class='o'>*</span><span class='mi'>70</span><span class='o'>-</span><span class='mi'>880</span><span class='o'>*</span><span class='n'>T</span><span class='o'>**</span><span class='mi'>18</span><span class='o'>+</span><span class='mi'>701</span><span class='o'>*</span>
-                 <span class='n'>T</span>  <span class='o'>**</span><span class='mi'>9</span>     <span class='p'>,</span><span class='n'>T</span><span class='o'>*</span><span class='n'>i</span><span class='o'>**</span><span class='p'>(</span><span class='mi'>1</span><span class='o'>-</span><span class='n'>T</span><span class='o'>**</span><span class='mi'>45</span><span class='o'>*</span><span class='mi'>2</span><span class='p'>)))(</span><span class='nb'>sum</span><span class='p'>(</span>
-               <span class='p'>[</span>              <span class='n'>Y</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,(</span><span class='n'>A</span><span class='o'>%</span><span class='mi'>3</span><span class='o'>/</span><span class='mf'>3.</span><span class='o'>+</span><span class='n'>X</span><span class='o'>%</span><span class='n'>v</span><span class='o'>+</span><span class='p'>(</span><span class='n'>X</span><span class='o'>/</span><span class='n'>v</span><span class='o'>+</span>
-                               <span class='n'>A</span><span class='o'>/</span><span class='mi'>3</span><span class='o'>/</span><span class='mf'>3.</span><span class='o'>-</span><span class='n'>x</span><span class='o'>/</span><span class='mi'>2</span><span class='p'>)</span><span class='o'>/</span><span class='mi'>1j</span><span class='p'>)</span><span class='o'>*</span><span class='mf'>2.5</span>
-                             <span class='o'>/</span><span class='n'>x</span>   <span class='o'>-</span><span class='mf'>2.7</span><span class='p'>,</span><span class='n'>i</span><span class='p'>)</span><span class='o'>**</span><span class='mi'>2</span> <span class='k'>for</span>  \
-                               <span class='n'>A</span>       <span class='ow'>in</span> <span class='n'>C</span>
-                                      <span class='p'>[:</span><span class='mi'>9</span><span class='p'>]])</span>
-                                        <span class='o'>/</span><span class='mi'>9</span><span class='p'>)</span>
-                                       <span class='p'>)</span>   <span class='p'>)</span>
-</code></pre></div></p>
-	</div>
-	</br>
-	<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8%E5%AD%A6/2012/11/26/BLPandBIBA.html">Read More</a>
-	</br>
-	</br>
-
-	<div class="post-meta">
-	    <p class="date"><i>09 Nov 2012</i></p>
-	</div>
-	<h1 class="post-title">
-		<a href="/Jekyll/2012/11/09/learn-about-markdown.html">learn about the markdown</a>
-	</h1><div id = "post">
-	<p><h2 id='id524'>特殊字符自动转换</h2>
-
-<p>在写 <code>&lt;</code> 和 <code>&amp;</code> 时要转成：<code>&amp;lt;</code> 和 <code>&amp;amp;</code></p>
-
-<blockquote>
-<p>主要注意在插入url时对<code>&amp;</code>的处理～</p>
-</blockquote>
-<hr />
-<h2 id='id525'>标题</h2>
-
-<p>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - （第二阶标题）; <br />类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶</p>
-<hr />
-<h2 id='id526'>区段引用</h2>
-
-<pre><code>&gt; hello world;
-&gt; Johnbug is the most handsome man in the world.
-&gt; My girl is absolutely agree with me.
-&gt;   #include &amp;lt;iostream&gt;
-&gt;
-&gt;       #include &lt;iostream&gt;
-&gt;
-&gt;&gt;      #include &lt;iostream&gt;
-&gt;</code></pre>
-
-<blockquote>
-<p>hello world;</p>
-</blockquote>
-
-<p>Johnbug is the most handsome man in the world.</p>
-
-<blockquote>
-<p>My girl is absolutely agree with me.</p>
-</blockquote>
-
-<blockquote>
-<p>#include &#60;iostream&gt;</p>
-
-<pre><code>  #include &lt;iostream&gt;</code></pre>
-
-<blockquote>
-<pre><code> #include &lt;iostream&gt;</code></pre>
-</blockquote>
-</blockquote>
-<hr />
-<h2 id='id527'>列表</h2>
-
-<ul>
-<li>first blood</li>
-
-<li>double kill</li>
-
-<li>triple kill</li>
-</ul>
-
-<ol>
-<li>ultra kill</li>
-
-<li>Rampage ！！！</li>
-</ol>
-
-<ul>
-<li>Killing Spree 大杀特杀 <br />Dominating 主宰比赛 <br />Maga Kill 杀人如麻 <br />Unstoppable 无人阻挡 <br />Wicked Sick 变态杀戮 <br />Monster Kill 妖怪般的杀戮 <br />God Like 神一般的杀戮 <br />Holy_Shit 超神</li>
-
-<li>happy dota!</li>
-</ul>
-<hr />
-<h2 id='id528'>代码</h2>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-int main(void)
-{
-    puts(&quot;hello,world&quot;);
-}</code></pre>
-
-<p>段内代码: <code>`</code></p>
-<hr />
-<h2 id='id529'>分割线</h2>
-
-<pre><code>* * *
-- - -
-***
-__________</code></pre>
-<hr />
-<h2 id='id530'>链接</h2>
-
-<h3 id='id531'>行内式</h3>
-
-<p>Click to visit my weibo <a href='http://weibo.com/johnbug'>Johnbug</a></p>
-
-<pre><code>Click to visti my weibo [Johnbug](http://weibo.com/johnbug)</code></pre>
-
-<h3 id='id532'>参考式</h3>
-
-<pre><code>This is the link to the [Top] [top] Link.</code></pre>
-
-<p>go to <a href='http://zzyjohnbug.github.com/'>My github blog</a> and <a href='http://github.com/zzyJOHNBUG/'>My github</a>; <br />这个很好用啊有木有；</p>
-<hr />
-<h2 id='id533'>图片</h2>
-
-<pre><code>![Alt Text](path of the picture &quot;Option title&quot;)</code></pre>
-
-<blockquote>
-<p>for example</p>
-</blockquote>
-
-<p><img src='http://attachments.cngba.com/attachments/forum/month_1005/10052019346d7762891d03fb17.jpg' alt='mio' /></p>
-
-<p>到目前为止， Markdown 还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 <code>&lt;img&gt;</code> 标签。</p>
-<hr />
-<h2 id='id534'>代码高亮</h2>
-
-<p>看到这两个blog才学会的！<a href='http://zyzhang.github.com/blog/2012/08/31/highlight-with-Jekyll-and-Pygments/'>用Jekyll和Pygments配置代码高亮</a> 和 <a href='http://jiyeqian.github.com/2012/07/host-your-pages-at-github-using-jekyll/'>基于jekyll的github建站指南</a></p>
-<div class='highlight'><pre><code class='c'><span class='cp'>#include &lt;stdio.h&gt;    </span>
-<span class='kt'>int</span> <span class='nf'>main</span><span class='p'>(</span><span class='kt'>void</span><span class='p'>)</span> 
-<span class='p'>{</span>
-   <span class='n'>puts</span><span class='p'>(</span><span class='s'>&quot;hello,world&quot;</span><span class='p'>);</span>
-<span class='p'>}</span>
-</code></pre></div><hr />
-<h2 id='id535'>文章格式：</h2>
-
-<pre><code>---	
-layout: post
-title: learn about the markdown 
-tags: [入门,笔记,markdown]
-category: [笔记]
----</code></pre></p>
-	</div>
-	</br>
-	<a href="/Jekyll/2012/11/09/learn-about-markdown.html">Read More</a>
-	</br>
-	</br>
-
 
 				<p class = "little"><a href = "/archive.html">View All</a></p>
 			</div>
@@ -788,6 +775,18 @@ category: [笔记]
 				</div>
 				<div id = "cata">
 					<h3>Recent Posts</h3>
+					
+					2013.04.20
+					<a href="/2013/04/20/learn-http.html">http复习</a>
+					</br>
+					
+					2013.03.26
+					<a href="/2013/03/26/css-float.html">css float的详解</a>
+					</br>
+					
+					2013.03.25
+					<a href="/2013/03/25/css-note.html">css2.1文档和《css权威指南》笔记</a>
+					</br>
 					
 					2013.03.09
 					<a href="/2013/03/09/php-note_1.html">php笔记——作用域，函数，单、双引号</a>
@@ -807,18 +806,6 @@ category: [笔记]
 					
 					2013.02.19
 					<a href="/JAVA/2013/02/19/jxl.html">用Java操作Excel——jxl.jar的理解</a>
-					</br>
-					
-					2013.02.06
-					<a href="/movies/2013/02/06/My-Favorite-Films.html">《英雄本色》和《死亡诗社》</a>
-					</br>
-					
-					2013.02.05
-					<a href="/Jekyll/2013/02/05/blogging-using-Jekyll.html">用Jekyll和github写blog的一些理解</a>
-					</br>
-					
-					2012.11.26
-					<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8%E5%AD%A6/2012/11/26/BLPandBIBA.html">计算机安全学：BLP模型和BIBA模型</a>
 					</br>
 					
 				</div>
