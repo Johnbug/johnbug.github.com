@@ -1,7 +1,7 @@
 ---
 layout: post
 title: learn about the markdown 
-category: Jekyll
+categories: jekyll
 ---
 ##特殊字符自动转换   
 在写 `<` 和 `&` 时要转成：`&lt;` 和 `&amp;`

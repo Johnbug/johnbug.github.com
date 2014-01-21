@@ -1,5 +1,4 @@
-baseurl:
-img_url: http://johnbug.github.com/assets/image
-safe: true
-auto: true
+name: Your New Jekyll Site
+markdown: redcarpet
 pygments: true
+permalink: /blog/:year/:month/:day/:title
