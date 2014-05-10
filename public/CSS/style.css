@@ -77,18 +77,6 @@ a {
       padding-bottom: 15px;
       float: left; }
 
-@media (min-width: 482px){
-  .idx-main-header ul{
-    width: 80%;
-  }
-}
-
-@media (min-width: 992px){
-  .idx-main-header ul{
-    width: 40%;
-  }
-}
-
 
 
 .idx-main-article {
@@ -134,3 +122,22 @@ a {
 
 .small-span {
   font-size: 0.6em; }
+
+@media (min-width: 482px){
+  .idx-main-header ul{
+    width: 80%;
+  }
+  .post {
+    width: 80%;
+  }
+}
+
+@media (min-width: 992px){
+  .idx-main-header ul{
+    width: 40%;
+  }
+  .post {
+    width: 60%;
+  }
+}
+
