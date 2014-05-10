@@ -2,9 +2,13 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "delicious" "Microsoft Yahei";
-  font-size: 14px;
-  line-height: 1.42857; }
+  font-family: 'delicious','Microsoft YaHei';  
+  line-height: 1.42857; 
+  color: #414243;
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;
+}
 
 a {
   color: #959595;
@@ -73,6 +77,20 @@ a {
       padding-bottom: 15px;
       float: left; }
 
+@media (min-width: 482px){
+  .idx-main-header ul{
+    width: 80%;
+  }
+}
+
+@media (min-width: 992px){
+  .idx-main-header ul{
+    width: 40%;
+  }
+}
+
+
+
 .idx-main-article {
   margin-top: 180px;
   font-size: 1.2em;
@@ -103,7 +121,16 @@ a {
     list-style: none; }
 
 .big-title {
-  font-size: 4em; }
+  margin: 0;
+  
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.4;
+  -webkit-transition: all .05s ease-in-out;
+  -moz-transition: all .05s ease-in-out;
+  -o-transition: all .05s ease-in-out;
+  transition: all .05s ease-in-out;
+  }
 
 .small-span {
   font-size: 0.6em; }
